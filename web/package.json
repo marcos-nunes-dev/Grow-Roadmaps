@@ -10,22 +10,18 @@
     "start": "next start"
   },
   "dependencies": {
+    "apollo-boost": "^0.3.1",
+    "graphql": "^14.2.1",
+    "isomorphic-unfetch": "^3.0.0",
     "next": "^8.0.4",
-    "next-redux-wrapper": "^2.1.0",
     "react": "^16.8.6",
+    "react-apollo": "^2.5.4",
     "react-dom": "^16.8.6",
-    "react-apollo": "^2.0.1",
-    "react-redux": "^6.0.1",
+    "react-redux": "^7.0.1",
     "redux": "^4.0.1",
-    "redux-devtools-extension": "^2.13.2",
-    "redux-thunk": "^2.2.0",
-    "apollo-client": "^2.5.1",
-    "apollo-client-preset": "^1.0.4",
-    "graphql": "^14.1.1",
-    "graphql-anywhere": "^4.0.2",
-    "graphql-tag": "^2.5.0",
-    "styled-components": "^4.2.0",
-    "isomorphic-unfetch": "^3.0.0"
+    "redux-devtools-extension": "^2.13.8",
+    "redux-thunk": "^2.3.0",
+    "styled-components": "^4.2.0"
   },
   "devDependencies": {
     "babel-plugin-styled-components": "^1.10.0"
