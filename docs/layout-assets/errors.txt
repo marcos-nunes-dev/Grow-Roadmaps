@@ -1,0 +1,21 @@
+[2019-04-10 17:13:24] layer "+": Expected Either a default asset specification or a layer asset specification but "+" found.
+[2019-04-10 17:13:24] layer "+44": Expected Either a default asset specification or a layer asset specification but "+" found.
+[2019-04-10 17:13:24] layer "+44": Expected Either a default asset specification or a layer asset specification but "+" found.
+[2019-04-10 17:13:24] layer "+44": Expected Either a default asset specification or a layer asset specification but "+" found.
+[2019-04-10 17:13:24] layer "+44": Expected Either a default asset specification or a layer asset specification but "+" found.
+[2019-04-10 17:13:24] layer "+44": Expected Either a default asset specification or a layer asset specification but "+" found.
+[2019-04-10 17:13:24] layer "+44": Expected Either a default asset specification or a layer asset specification but "+" found.
+[2019-04-10 17:13:24] layer "+44": Expected Either a default asset specification or a layer asset specification but "+" found.
+[2019-04-10 17:13:24] layer "+44": Expected Either a default asset specification or a layer asset specification but "+" found.
+[2019-04-10 17:13:24] layer "+44": Expected Either a default asset specification or a layer asset specification but "+" found.
+[2019-04-10 17:13:24] layer "Javascript Angular.js Python Vue.js C# (C Sharp) Javascript Ang": Expected end of input but "C" found.
+[2019-04-10 17:13:24] layer "+44": Expected Either a default asset specification or a layer asset specification but "+" found.
+[2019-04-10 17:13:24] layer "+44": Expected Either a default asset specification or a layer asset specification but "+" found.
+[2019-04-10 17:13:24] layer "+44": Expected Either a default asset specification or a layer asset specification but "+" found.
+[2019-04-10 17:13:24] layer "+ Upvote": Expected Either a default asset specification or a layer asset specification but "+" found.
+[2019-04-10 17:13:24] layer "+44": Expected Either a default asset specification or a layer asset specification but "+" found.
+[2019-04-10 17:13:24] layer "+44": Expected Either a default asset specification or a layer asset specification but "+" found.
+[2019-04-10 17:13:24] layer "+44": Expected Either a default asset specification or a layer asset specification but "+" found.
+[2019-04-10 17:13:24] layer "+44": Expected Either a default asset specification or a layer asset specification but "+" found.
+[2019-04-10 17:13:24] layer "+44": Expected Either a default asset specification or a layer asset specification but "+" found.
+[2019-04-10 17:13:24] layer "+44": Expected Either a default asset specification or a layer asset specification but "+" found.
