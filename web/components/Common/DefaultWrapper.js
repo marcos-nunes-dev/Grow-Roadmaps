@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Logo from '../Common/Logo';
+import UserActions from '../SidebarScene/UserActions';
 
 const LogoWrapper = styled.div`
   margin-top: 15px;
@@ -29,7 +30,7 @@ function DefaultWrapper(props) {
           <Logo type="icon"/>
         </LogoWrapper>
         <UserActionsWrapper>
-          asd
+          <UserActions/>
         </UserActionsWrapper>
       </RightBar> 
       {props.children}

@@ -1,15 +1,29 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const UserActionsWrapper = styled.div`
-  
-`
+const UserActionsWrapper = styled.div``;
+
+const Arrow = styled.div`
+width: 100%;
+text-align: center;
+  svg {
+    transform: rotate(90deg);
+    width: 25%;
+    fill: #fff;
+  }
+`;
 
 export default function UserActions(props) {
   return (
     <UserActionsWrapper>
-      <Avatar />
-      
+      <div>asd</div>
+      <Arrow>
+      <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 451.846 451.847">
+        <path d="M345.441,248.292L151.154,442.573c-12.359,12.365-32.397,12.365-44.75,0c-12.354-12.354-12.354-32.391,0-44.744
+          L278.318,225.92L106.409,54.017c-12.354-12.359-12.354-32.394,0-44.748c12.354-12.359,32.391-12.359,44.75,0l194.287,194.284
+          c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,248.292z"/>
+      </svg>
+      </Arrow>
     </UserActionsWrapper>
-  )
+  );
 }
