@@ -27,6 +27,13 @@ const MainItemWrapper = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 20px;
+  opacity: .33;
+  transition: all .3s ease;
+
+  :hover{
+    opacity: 1;
+    cursor: pointer;
+  }
 `;
 
 const IconWrapper = styled.div`
