@@ -20,17 +20,19 @@
     "react-apollo": "^2.5.4",
     "react-dom": "^16.8.6",
     "react-redux": "^7.0.1",
+    "react-scripts": "2.0.0",
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
     "styled-components": "^4.2.0"
   },
   "devDependencies": {
-    "babel-plugin-styled-components": "latest",
     "@storybook/addon-actions": "latest",
     "@storybook/addon-links": "latest",
     "@storybook/addons": "latest",
     "@storybook/react": "latest",
-    "babel-loader": "^8.0.5"
+    "babel-loader": "^8.0.5",
+    "babel-plugin-styled-components": "latest",
+    "babel-plugin-inline-react-svg": "^1.0.1"
   }
 }

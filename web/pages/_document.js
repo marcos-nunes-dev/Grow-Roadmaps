@@ -35,6 +35,7 @@ export default class MyDocument extends Document {
           <link rel="stylesheet" href="/static/css/global.css" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta charSet="utf-8" />
+          <link href="https://fonts.googleapis.com/css?family=Fira+Sans:100,200,300,400,500,600,700" rel="stylesheet"/>
         </Head>
         <body>
           <Main />
