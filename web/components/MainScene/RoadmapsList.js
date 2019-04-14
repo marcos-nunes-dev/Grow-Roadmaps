@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Javascript from '../../static/icons/javascript.svg';
+import ReactDOM from 'react-dom';
+import { connect } from 'react-redux';
+import { updateSelectedRoadmap } from '../../ducks/growBoard';
 
 const MainWrapper = styled.div`
   height: 87vh;
   overflow-y: scroll;
   padding: 10px 25px;
+
+  .active {
+    opacity: 1;
+  }
 
   ::-webkit-scrollbar-track {
     border-radius: 10px;
@@ -23,14 +30,21 @@ const MainWrapper = styled.div`
   }
 `;
 
+const ItemSelected = styled.div`
+  position: absolute;
+  left: 0;
+  transition: all .5s;
+  background: red;
+`;
+
 const MainItemWrapper = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 20px;
-  opacity: .33;
-  transition: all .3s ease;
+  opacity: 0.33;
+  transition: all 0.3s ease;
 
-  :hover{
+  :hover {
     opacity: 1;
     cursor: pointer;
   }
@@ -47,11 +61,13 @@ const TitleWrapper = styled.div`
   font-size: 15px;
 `;
 
-export default class RoadmapsList extends Component {
+class RoadmapsList extends Component {
   constructor(props) {
     super(props);
     this.state = {
       roadlist: [],
+      posY: 0,
+      selected: '',
     };
   }
 
@@ -63,7 +79,7 @@ export default class RoadmapsList extends Component {
 
   RoadmapListItem = item => {
     return (
-      <MainItemWrapper key={item.key}>
+      <MainItemWrapper key={item.key} ref={`itemRoad${item.key}`} onClick={() => { this.setActiveClass(`itemRoad${item.key}`) }}>
         <IconWrapper>
           <Javascript />
         </IconWrapper>
@@ -72,13 +88,57 @@ export default class RoadmapsList extends Component {
     );
   };
 
+  setActiveClass = (element) => {
+    this.state.selected && this.refs[this.state.selected].classList.remove('active');
+
+    this.setState({
+      selected: element
+    }, ()=> {
+        this.props.updateSelectedRoadmap(element);
+        this.refs[element].classList.add('active');
+    })
+  }
+
+  updatePosY = (e) => {
+    // if(this.state.selected && this.state.posY !== this.refs[this.state.selected].offsetTop){
+    //   this.setState({
+    //     posY: this.refs[this.state.selected].offsetTop
+    //   })
+    // }else{
+    //   if(!this.state.selected){
+    //     this.setState({
+    //       posY: e.clientY,
+    //     });
+    //   }
+    // }
+  }
+
+  //offsetTop 
+
   render() {
-    console.log('asdasd', this.state.roadlist);
     return (
-      <MainWrapper>
+      <MainWrapper onMouseMove={this.updatePosY.bind(this)}>
+        {/* <ItemSelected style={{ top: `${this.state.posY}px` }}>a</ItemSelected> */}
         {this.state.roadlist &&
-          this.state.roadlist.map(item => <>{this.RoadmapListItem(item)}</>)}
+          this.state.roadlist.map(item => (
+            <>{this.RoadmapListItem(item)}</>
+          ))}
       </MainWrapper>
     );
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    selectedRoadmap: state.growBoardReducer.selectedRoadmap,
+  };
+}
+
+const mapDispatchToProps = {
+  updateSelectedRoadmap,
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(RoadmapsList);
