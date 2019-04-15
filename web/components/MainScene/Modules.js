@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
+import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 import { connect } from 'react-redux';
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import styled from 'styled-components';
 import DragIcon from '../../static/icons/menu.svg';
 
 const ModulesWrapper = styled.div`
-  width: 25vw;
+  width: 23vw;
   background: #fff;
   z-index: 2;
   position: relative;
-  -webkit-box-shadow: 0px 0px 29px 0px rgba(0, 0, 0, 0.2);
-  -moz-box-shadow: 0px 0px 29px 0px rgba(0, 0, 0, 0.2);
-  box-shadow: 0px 0px 29px 0px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
 `;
 
 const ModulesTitleWrapper = styled.div`
@@ -24,9 +24,9 @@ const ModulesTitleWrapper = styled.div`
 const NewModuleWrapper = styled.div`
   background: #4427f1;
   color: #fff;
-  -webkit-box-shadow: 0px 0px 47px -4px rgba(68, 39, 241, 0.45);
-  -moz-box-shadow: 0px 0px 47px -4px rgba(68, 39, 241, 0.45);
-  box-shadow: 0px 0px 47px -4px rgba(68, 39, 241, 0.45);
+  -webkit-box-shadow: 0px 0px 7px -4px rgba(68, 39, 241, 0.45);
+  -moz-box-shadow: 0px 0px 7px -4px rgba(68, 39, 241, 0.45);
+  box-shadow: 0px 0px 7px -4px rgba(68, 39, 241, 0.45);
   font-weight: 900;
   font-size: 25px;
   position: absolute;
@@ -48,15 +48,16 @@ const DraggablesHolder = styled.div`
 
 const ItemDraggableWrapper = styled.div`
   background: ${props => (props.isDragging ? '#4427f1' : '#fff')};
-  -webkit-box-shadow: 0px 2px 29px 0px rgba(0, 0, 0, 0.17);
-  -moz-box-shadow: 0px20px 29px 0px rgba(0, 0, 0, 0.17);
-  box-shadow: 0px 2px 29px 0px rgba(0, 0, 0, 0.17);
+  -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.07);
+  -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.07);
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.07);
   padding: 20px;
   margin-bottom: 20px;
   display: flex;
   flex-direction: row;
   align-items: center;
   transition: background 1s;
+  box-sizing: border-box !important;
 
   h1 {
     color: ${props => (props.isDragging ? '#fff' : '#5b5f64')};

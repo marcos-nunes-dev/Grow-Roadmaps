@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
-import Javascript from '../../static/icons/javascript.svg';
-import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
 import { updateSelectedRoadmap } from '../../ducks/growBoard';
+import Javascript from '../../static/icons/javascript.svg';
 
 const MainWrapper = styled.div`
   height: 87vh;
   overflow-y: scroll;
-  padding: 10px 25px;
+  padding: 0 25px;
 
   .active {
     opacity: 1;
@@ -40,7 +39,7 @@ const ItemSelected = styled.div`
 const MainItemWrapper = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   opacity: 0.33;
   transition: all 0.3s ease;
 
@@ -51,14 +50,14 @@ const MainItemWrapper = styled.div`
 `;
 
 const IconWrapper = styled.div`
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
   margin-right: 10px;
 `;
 
 const TitleWrapper = styled.div`
   color: #738393;
-  font-size: 15px;
+  font-size: 13px;
 `;
 
 class RoadmapsList extends Component {

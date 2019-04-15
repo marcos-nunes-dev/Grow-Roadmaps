@@ -2,3 +2,20 @@ html, body{
   font-family: 'Fira Sans', sans-serif;
   margin: 0 !important;
 }
+
+html{
+  line-height: 1.15 !important;
+}
+
+body{
+  line-height: 1.15 !important;
+}
+
+*, *::before, *::after {
+  -webkit-box-sizing: initial !important;
+  box-sizing: initial !important;
+}
+
+.ant-table-thead > tr.ant-table-row-hover:not(.ant-table-expanded-row) > td, .ant-table-tbody > tr.ant-table-row-hover:not(.ant-table-expanded-row) > td, .ant-table-thead > tr:hover:not(.ant-table-expanded-row) > td, .ant-table-tbody > tr:hover:not(.ant-table-expanded-row) > td {
+  background: #fdfdfd !important;
+}

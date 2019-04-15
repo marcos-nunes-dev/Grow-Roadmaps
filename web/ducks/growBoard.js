@@ -8,15 +8,16 @@ const UPDATE_SELECTED_ROADMAP = 'GROW/GROWBOARD/UPDATE_SELECTED_ROADMAP';
 export const INITIAL_STATE = {
   selectedRoadmap: '',
   dataFromSelectedRoadmap: [], //DELETEEEEE
-}
+};
 
 // Reducer
 export default function reducer(state = INITIAL_STATE, action = {}) {
   switch (action.type) {
     case UPDATE_SELECTED_ROADMAP:
       let filteredKey = action.roadmap.substr(8);
-      
-      let ResponseFromQuery = _.find(listRoadmaps, o => { //DELETEEEEE
+
+      let ResponseFromQuery = _.find(listRoadmaps, o => {
+        //DELETEEEEE
         return o.key === parseInt(filteredKey); //DELETEEEEE
       }); //DELETEEEEE
 
