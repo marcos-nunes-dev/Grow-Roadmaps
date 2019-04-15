@@ -5,13 +5,14 @@ import styled from 'styled-components';
 import DragIcon from '../../static/icons/menu.svg';
 
 const ModulesWrapper = styled.div`
-  width: 23vw;
+  width: ${props => props.hoveredRoadlist ? '25vw' : '23vw'};
   background: #fff;
   z-index: 2;
   position: relative;
   -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  transition: all .3s ease;
 `;
 
 const ModulesTitleWrapper = styled.div`
@@ -87,6 +88,20 @@ const IconHolder = styled.div`
   }
 `;
 
+const RoadmapCollapsibleElement = styled.div`
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  transition: all .3s ease;
+  :hover{
+    width: 4px;
+    background: #cecece;
+    cursor: pointer;
+  }
+`;
+
 const reorder = (list, startIndex, endIndex) => {
   const result = Array.from(list);
   const [removed] = result.splice(startIndex, 1);
@@ -99,7 +114,7 @@ class Modules extends Component {
     super(props);
     this.state = {
       moduleList: [],
-      // items: getItems(10),
+      RoadlistCollapsibleHovered: false,
     };
     this.onDragEnd = this.onDragEnd.bind(this);
   }
@@ -138,11 +153,16 @@ class Modules extends Component {
     });
   }
 
+  handleHoverRoadlist = (value) =>{
+    this.setState({
+      RoadlistCollapsibleHovered: value
+    })
+  }
+
   render() {
-    console.log(this.state.moduleList);
-    // console.log(this.props.dataFromSelectedRoadmap.modules);
     return (
-      <ModulesWrapper>
+      <ModulesWrapper hoveredRoadlist={this.state.RoadlistCollapsibleHovered}>
+        <RoadmapCollapsibleElement onMouseOver={() => this.handleHoverRoadlist(true)} onMouseOut={() => this.handleHoverRoadlist(false)}/>
         <NewModuleWrapper>+</NewModuleWrapper>
         <ModulesTitleWrapper>
           {this.props.dataFromSelectedRoadmap.name} Modules
