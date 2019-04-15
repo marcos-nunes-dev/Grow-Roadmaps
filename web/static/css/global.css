@@ -1,6 +1,10 @@
 html, body{
-  font-family: 'Fira Sans', sans-serif;
+  font-family: 'Fira Sans', sans-serif !important;
   margin: 0 !important;
+}
+
+h1,h2,h3,h4,h5,h6,p,span{
+  font-family: 'Fira Sans', sans-serif !important;
 }
 
 html{

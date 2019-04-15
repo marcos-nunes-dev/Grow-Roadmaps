@@ -32,7 +32,7 @@ const NewModuleWrapper = styled.div`
   position: absolute;
   top: 0;
   right: 25px;
-  padding: 5px 15px;
+  padding: 5px 10px;
   padding-top: 25px;
   border-bottom-left-radius: 100px;
   border-bottom-right-radius: 100px;
@@ -61,7 +61,7 @@ const ItemDraggableWrapper = styled.div`
 
   h1 {
     color: ${props => (props.isDragging ? '#fff' : '#5b5f64')};
-    font-size: 20px;
+    font-size: 17px;
     font-weight: 400;
     margin-bottom: 0px;
     margin-top: 0px;
@@ -70,10 +70,10 @@ const ItemDraggableWrapper = styled.div`
 
   h2 {
     color: ${props => (props.isDragging ? '#fff' : '#bbbcbd')};
-    font-size: 12px;
+    font-size: 10px;
     font-weight: 400;
     margin-bottom: 0px;
-    margin-top: 0px;
+    margin-top: 3px;
     transition: color 1s;
   }
 `;

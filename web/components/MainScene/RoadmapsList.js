@@ -58,6 +58,7 @@ const IconWrapper = styled.div`
 const TitleWrapper = styled.div`
   color: #738393;
   font-size: 13px;
+  font-weight: 500;
 `;
 
 class RoadmapsList extends Component {
