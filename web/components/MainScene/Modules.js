@@ -92,11 +92,11 @@ const RoadmapCollapsibleElement = styled.div`
   position: absolute;
   left: 0;
   top: 0;
-  width: 2px;
+  width: 7px;
   height: 100%;
   transition: all .3s ease;
   :hover{
-    width: 4px;
+    width: 7px;
     background: #cecece;
     cursor: pointer;
   }
