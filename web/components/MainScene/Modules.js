@@ -3,16 +3,17 @@ import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import DragIcon from '../../static/icons/menu.svg';
+import { updateRoadmapCollapsedState } from '../../ducks/growBoard';
 
 const ModulesWrapper = styled.div`
-  width: ${props => props.hoveredRoadlist ? '25vw' : '23vw'};
+  width: ${props => (props.hoveredRoadlist ? '25vw' : '23vw')};
   background: #fff;
   z-index: 2;
   position: relative;
   -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
-  transition: all .3s ease;
+  transition: all 0.3s ease;
 `;
 
 const ModulesTitleWrapper = styled.div`
@@ -43,9 +44,7 @@ const CardListWrapper = styled.div`
   padding: 0px 25px;
 `;
 
-const DraggablesHolder = styled.div`
-  
-`;
+const DraggablesHolder = styled.div``;
 
 const ItemDraggableWrapper = styled.div`
   background: ${props => (props.isDragging ? '#4427f1' : '#fff')};
@@ -94,8 +93,8 @@ const RoadmapCollapsibleElement = styled.div`
   top: 0;
   width: 7px;
   height: 100%;
-  transition: all .3s ease;
-  :hover{
+  transition: all 0.3s ease;
+  :hover {
     width: 7px;
     background: #cecece;
     cursor: pointer;
@@ -153,16 +152,20 @@ class Modules extends Component {
     });
   }
 
-  handleHoverRoadlist = (value) =>{
+  handleHoverRoadlist = value => {
     this.setState({
-      RoadlistCollapsibleHovered: value
-    })
-  }
+      RoadlistCollapsibleHovered: value,
+    });
+  };
 
   render() {
     return (
       <ModulesWrapper hoveredRoadlist={this.state.RoadlistCollapsibleHovered}>
-        <RoadmapCollapsibleElement onMouseOver={() => this.handleHoverRoadlist(true)} onMouseOut={() => this.handleHoverRoadlist(false)}/>
+        <RoadmapCollapsibleElement
+          onClick={() => this.props.updateRoadmapCollapsedState()}
+          onMouseOver={() => this.handleHoverRoadlist(true)}
+          onMouseOut={() => this.handleHoverRoadlist(false)}
+        />
         <NewModuleWrapper>+</NewModuleWrapper>
         <ModulesTitleWrapper>
           {this.props.dataFromSelectedRoadmap.name} Modules
@@ -216,7 +219,13 @@ function mapStateToProps(state) {
   return {
     selectedRoadmap: state.growBoardReducer.selectedRoadmap,
     dataFromSelectedRoadmap: state.growBoardReducer.dataFromSelectedRoadmap,
+    roadmapCollapsed: state.growBoardReducer.roadmapCollapsed
   };
 }
 
-export default connect(mapStateToProps)(Modules);
+const mapDispatchToProps = {
+  updateRoadmapCollapsedState,
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Modules);

@@ -29,13 +29,6 @@ const MainWrapper = styled.div`
   }
 `;
 
-const ItemSelected = styled.div`
-  position: absolute;
-  left: 0;
-  transition: all .5s;
-  background: red;
-`;
-
 const MainItemWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -59,6 +52,9 @@ const TitleWrapper = styled.div`
   color: #738393;
   font-size: 13px;
   font-weight: 500;
+  opacity: ${ props => props.collapsedRoadmap ? '0' : '1' };
+  visibility: ${ props => props.collapsedRoadmap ? 'hidden' : 'initial' };
+  transition: all .3s ease;
 `;
 
 class RoadmapsList extends Component {
@@ -66,7 +62,6 @@ class RoadmapsList extends Component {
     super(props);
     this.state = {
       roadlist: [],
-      posY: 0,
       selected: '',
     };
   }
@@ -83,7 +78,7 @@ class RoadmapsList extends Component {
         <IconWrapper>
           <Javascript />
         </IconWrapper>
-        <TitleWrapper>{item.name}</TitleWrapper>
+        <TitleWrapper collapsedRoadmap={this.props.roadmapCollapsed}>{item.name}</TitleWrapper>
       </MainItemWrapper>
     );
   };
@@ -99,26 +94,9 @@ class RoadmapsList extends Component {
     })
   }
 
-  updatePosY = (e) => {
-    // if(this.state.selected && this.state.posY !== this.refs[this.state.selected].offsetTop){
-    //   this.setState({
-    //     posY: this.refs[this.state.selected].offsetTop
-    //   })
-    // }else{
-    //   if(!this.state.selected){
-    //     this.setState({
-    //       posY: e.clientY,
-    //     });
-    //   }
-    // }
-  }
-
-  //offsetTop 
-
   render() {
     return (
-      <MainWrapper onMouseMove={this.updatePosY.bind(this)}>
-        {/* <ItemSelected style={{ top: `${this.state.posY}px` }}>a</ItemSelected> */}
+      <MainWrapper>
         {this.state.roadlist &&
           this.state.roadlist.map(item => (
             <>{this.RoadmapListItem(item)}</>
@@ -131,6 +109,7 @@ class RoadmapsList extends Component {
 function mapStateToProps(state) {
   return {
     selectedRoadmap: state.growBoardReducer.selectedRoadmap,
+    roadmapCollapsed: state.growBoardReducer.roadmapCollapsed,
   };
 }
 

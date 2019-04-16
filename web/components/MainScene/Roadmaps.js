@@ -2,15 +2,18 @@ import React from 'react';
 import styled from 'styled-components';
 import RoadmapsList from './RoadmapsList';
 import SearchField from '../Common/SearchField';
+import SearchFieldCollapsed from '../Common/SearchFieldCollapsed';
 import { DefaultButton } from '../Common/Button';
+import { connect } from 'react-redux';
 
 //JUST TEST PURPOSE
 import { listRoadmaps } from '../../libs/demo-data';
 
 const MainWrapper = styled.div`
   background: #ecedef;
-  width: 16vw;
+  width: ${props => props.collapsed ? '4vw' : '16vw'};
   position: relative;
+  transition: all .3s ease;
 `;
 
 const SearchFieldWrapper = styled.div`
@@ -26,11 +29,11 @@ const FloatButtonWrapper = styled.div`
   width: 75%;
 `;
 
-export default function Roadmaps() {
+function Roadmaps(props) {
   return (
-    <MainWrapper>
+    <MainWrapper collapsed={props.roadmapCollapsed}>
       <SearchFieldWrapper>
-        <SearchField />
+        {props.roadmapCollapsed ? <SearchFieldCollapsed /> : <SearchField />}
       </SearchFieldWrapper>
       <RoadmapsList roadlist={listRoadmaps} />
       <FloatButtonWrapper>
@@ -39,3 +42,11 @@ export default function Roadmaps() {
     </MainWrapper>
   );
 }
+
+function mapStateToProps(state) {
+  return {
+    roadmapCollapsed: state.growBoardReducer.roadmapCollapsed
+  };
+}
+
+export default connect(mapStateToProps)(Roadmaps);

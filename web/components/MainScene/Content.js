@@ -3,12 +3,14 @@ import styled from 'styled-components';
 import EditIcon from '../../static/icons/edit.svg';
 import { BorderedButton } from '../Common/Button';
 import TableContent from '../MainScene/TableContent';
+import { connect } from 'react-redux';
 
 const ContentWrapper = styled.div`
   max-height: 100vh;
-  width: 57vw;
+  width: ${props => props.collapsedRoadmap ? '69vw' : '57vw'} ;
   overflow-y: scroll;
   background: #f3f3f3;
+  transition: all .3s ease;
   ::-webkit-scrollbar-track {
     border-radius: 10px;
     background-color: #ebeced;
@@ -67,10 +69,10 @@ const ButtonsArea = styled.div`
   align-items: flex-end;
 `;
 
-export default class Content extends Component {
+class Content extends Component {
   render() {
     return (
-      <ContentWrapper>
+      <ContentWrapper collapsedRoadmap={this.props.roadmapCollapsed}>
         <UtilArea>
           <ActionArea>
             <TitleArea>
@@ -90,3 +92,11 @@ export default class Content extends Component {
     );
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    roadmapCollapsed: state.growBoardReducer.roadmapCollapsed
+  };
+}
+
+export default connect(mapStateToProps)(Content);
