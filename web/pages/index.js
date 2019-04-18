@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Wrapper from '../components/Common/DefaultWrapper';
-import Roadmaps from '../components/MainScene/Roadmaps';
+import Content from '../components/MainScene/Content';
 import Modules from '../components/MainScene/Modules';
+import Roadmaps from '../components/MainScene/Roadmaps';
 
 class index extends Component {
   render() {
@@ -9,6 +10,7 @@ class index extends Component {
       <Wrapper>
         <Roadmaps />
         <Modules />
+        <Content />
       </Wrapper>
     );
   }

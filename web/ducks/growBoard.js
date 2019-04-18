@@ -1,22 +1,28 @@
+/* eslint-disable no-case-declarations */
+
 import _ from 'lodash'; //DELETEEEEE
 import { listRoadmaps } from '../libs/demo-data'; //DELETEEEEE
 
-// Actions
+// ***************************** ACTIONS ****************************
 const UPDATE_SELECTED_ROADMAP = 'GROW/GROWBOARD/UPDATE_SELECTED_ROADMAP';
+const UPDATE_STATE_ROADMAPCOLLAPSE =
+  'GROW/GROWBOARD/UPDATE_STATE_ROADMAPCOLLAPSE';
 
-// Initial state
+// ***************************** INITIAL STATE ****************************
 export const INITIAL_STATE = {
   selectedRoadmap: '',
+  roadmapCollapsed: false,
   dataFromSelectedRoadmap: [], //DELETEEEEE
-}
+};
 
-// Reducer
+// ***************************** REDUCERS ****************************
 export default function reducer(state = INITIAL_STATE, action = {}) {
   switch (action.type) {
     case UPDATE_SELECTED_ROADMAP:
       let filteredKey = action.roadmap.substr(8);
-      
-      let ResponseFromQuery = _.find(listRoadmaps, o => { //DELETEEEEE
+
+      let ResponseFromQuery = _.find(listRoadmaps, o => {
+        //DELETEEEEE
         return o.key === parseInt(filteredKey); //DELETEEEEE
       }); //DELETEEEEE
 
@@ -25,13 +31,22 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
         selectedRoadmap: filteredKey,
         dataFromSelectedRoadmap: ResponseFromQuery, //DELETEEEEE
       };
+    case UPDATE_STATE_ROADMAPCOLLAPSE:
+      return {
+        ...state,
+        roadmapCollapsed: !state.roadmapCollapsed,
+      };
 
     default:
       return state;
   }
 }
 
-// Action Creators
+// ***************************** ACTIONS CREATORS ****************************
 export function updateSelectedRoadmap(roadmap) {
   return { type: UPDATE_SELECTED_ROADMAP, roadmap };
+}
+
+export function updateRoadmapCollapsedState() {
+  return { type: UPDATE_STATE_ROADMAPCOLLAPSE};
 }

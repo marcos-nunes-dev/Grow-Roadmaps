@@ -12,6 +12,8 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
+    "@zeit/next-css": "^1.0.1",
+    "antd": "latest",
     "apollo-boost": "^0.3.1",
     "graphql": "^14.2.1",
     "isomorphic-unfetch": "^3.0.0",
@@ -35,6 +37,7 @@
     "@storybook/react": "latest",
     "babel-loader": "^8.0.5",
     "babel-plugin-inline-react-svg": "^1.0.1",
-    "babel-plugin-styled-components": "latest"
+    "babel-plugin-styled-components": "latest",
+    "babel-plugin-import": "^1.9.1"
   }
 }

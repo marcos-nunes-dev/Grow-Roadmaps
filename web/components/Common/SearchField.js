@@ -17,6 +17,7 @@ const SearchWrapper = styled.div`
     border-radius: 100px;
     font-family: 'Fira Sans', sans-serif;
     color: #2e4358;
+    font-size: 13px;
   }
 
   input::placeholder {
