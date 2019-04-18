@@ -1,7 +1,7 @@
 # Ora Ora, então você quer contribuir? :fire:
 
 Nossa comunidade (ainda muito pequena:sob:) pode se encontrada no [Discord](https://discord.gg/Qjzkjm).
-Lista completa de funcionalidades do App em [Functionalities.md](#).
+Lista completa de funcionalidades do App em [Functionalities.md](https://github.com/MarcosRenato266/Grow-Roadmaps/blob/master/docs/Functionalities.md).
 
 ## Stack e libs utilizada:  :bookmark_tabs:
 

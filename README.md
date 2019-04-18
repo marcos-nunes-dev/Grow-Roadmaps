@@ -9,7 +9,7 @@
 
 ## Quer Contribuir com o projeto? :open_hands:
 Para contribuir com o projeto com ideias, Backend, frontend ou design acesse o link [Contribution.md](https://github.com/MarcosRenato266/Grow-Roadmaps/blob/master/docs/Contribution.md)
-Se você só está curioso ou quer um "norte" de como pode contribuir veja o arquivo [Functionalities.md](#)
+Se você só está curioso ou quer um "norte" de como pode contribuir veja o arquivo [Functionalities.md](https://github.com/MarcosRenato266/Grow-Roadmaps/blob/master/docs/Functionalities.md)
  para conhecer a descrição de todas funcionalidades do app.
 
 ## Porque usar @Grow Roadmaps? :speech_balloon:
