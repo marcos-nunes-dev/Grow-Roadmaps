@@ -7,7 +7,12 @@ import Javascript from '../../static/icons/javascript.svg';
 const MainWrapper = styled.div`
   height: 87vh;
   overflow-y: scroll;
-  padding: 0 25px;
+  padding-left: 7px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
   .active {
     opacity: 1;
   }
@@ -29,10 +34,10 @@ const MainWrapper = styled.div`
 `;
 
 const MainItemWrapper = styled.div`
-  display: flex;
-  align-items: center;
   margin-bottom: 15px;
   opacity: 0.33;
+  transition: all 0.3s ease;
+
   :hover {
     opacity: 1;
     cursor: pointer;
@@ -40,9 +45,11 @@ const MainItemWrapper = styled.div`
 `;
 
 const IconWrapper = styled.div`
-  width: 25px;
-  height: 25px;
-  margin-right: 10px;
+  width: 100%;
+  svg {
+    width: 25px;
+    height: 25px;
+  }
 `;
 
 const TitleWrapper = styled.div`
@@ -51,9 +58,10 @@ const TitleWrapper = styled.div`
   font-weight: 500;
   opacity: ${props => (props.collapsedRoadmap ? '0' : '1')};
   visibility: ${props => (props.collapsedRoadmap ? 'hidden' : 'initial')};
+  transition: all 0.3s ease;
 `;
 
-class RoadmapsList extends Component {
+class RoadmapsListCollapsed extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -70,33 +78,40 @@ class RoadmapsList extends Component {
 
   RoadmapListItem = item => {
     return (
-      <MainItemWrapper key={item.key} ref={`itemRoad${item.key}`} onClick={() => { this.setActiveClass(`itemRoad${item.key}`) }}>
+      <MainItemWrapper
+        key={item.key}
+        ref={`itemRoad${item.key}`}
+        onClick={() => {
+          this.setActiveClass(`itemRoad${item.key}`);
+        }}
+      >
         <IconWrapper>
           <Javascript />
         </IconWrapper>
-        <TitleWrapper>{item.name}</TitleWrapper>
       </MainItemWrapper>
     );
   };
 
-  setActiveClass = (element) => {
-    this.state.selected && this.refs[this.state.selected].classList.remove('active');
+  setActiveClass = element => {
+    this.state.selected &&
+      this.refs[this.state.selected].classList.remove('active');
 
-    this.setState({
-      selected: element
-    }, ()=> {
+    this.setState(
+      {
+        selected: element,
+      },
+      () => {
         this.props.updateSelectedRoadmap(element);
         this.refs[element].classList.add('active');
-    })
-  }
+      }
+    );
+  };
 
   render() {
     return (
       <MainWrapper>
         {this.state.roadlist &&
-          this.state.roadlist.map(item => (
-            <>{this.RoadmapListItem(item)}</>
-          ))}
+          this.state.roadlist.map(item => <>{this.RoadmapListItem(item)}</>)}
       </MainWrapper>
     );
   }
@@ -115,4 +130,4 @@ const mapDispatchToProps = {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(RoadmapsList);
+)(RoadmapsListCollapsed);

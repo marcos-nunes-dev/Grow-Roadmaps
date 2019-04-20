@@ -13,9 +13,9 @@ const SearchWrapperCollapsed = styled.div`
     background: #d4dfe5;
     box-shadow: none;
     border: none;
-    width: 35px;
+    width: 100%;
     height: 35px;
-    border-radius: 100%;
+    border-radius: 100px;
     font-family: 'Fira Sans', sans-serif;
     color: #2e4358;
     font-size: 13px;
@@ -32,7 +32,7 @@ const SearchWrapperCollapsed = styled.div`
     outline: 0;
   }
 
-  input:hover{
+  input:hover {
     cursor: pointer;
   }
 
@@ -40,14 +40,14 @@ const SearchWrapperCollapsed = styled.div`
     position: absolute;
     width: 15px;
     height: 15px;
-    right: 9px;
+    right: 50%;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-50%) translateX(50%);
     cursor-events: none;
     fill: #aab5c0;
   }
 
-  .icon:hover{
+  .icon:hover {
     cursor: pointer;
   }
 `;

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import RoadmapsList from './RoadmapsList';
+import RoadmapsListCollapsed from './RoadmapsListCollapsed';
 import SearchField from '../Common/SearchField';
 import SearchFieldCollapsed from '../Common/SearchFieldCollapsed';
 import { DefaultButton } from '../Common/Button';
@@ -11,9 +12,9 @@ import { listRoadmaps } from '../../libs/demo-data';
 
 const MainWrapper = styled.div`
   background: #ecedef;
-  width: ${props => props.collapsed ? '4vw' : '16vw'};
+  width: ${props => (props.collapsed ? '4vw' : '16vw')};
   position: relative;
-  transition: all .3s ease;
+  transition: all .3s;
 `;
 
 const SearchFieldWrapper = styled.div`
@@ -30,22 +31,44 @@ const FloatButtonWrapper = styled.div`
 `;
 
 function Roadmaps(props) {
+  function RoadmapsExpanded() {
+    return (
+      <>
+        <SearchFieldWrapper>
+          <SearchField />
+        </SearchFieldWrapper>
+        <RoadmapsList roadlist={listRoadmaps} />
+        <FloatButtonWrapper>
+          <DefaultButton text="New Roadmap" />
+        </FloatButtonWrapper>
+      </>
+    );
+  }
+
+  function RoadmapsCollapsed() {
+    return (
+      <>
+        <SearchFieldWrapper>
+          <SearchFieldCollapsed />
+        </SearchFieldWrapper>
+        <RoadmapsListCollapsed roadlist={listRoadmaps} />
+        <FloatButtonWrapper>
+          <DefaultButton text="New Roadmap" />
+        </FloatButtonWrapper>
+      </>
+    );
+  }
+
   return (
     <MainWrapper collapsed={props.roadmapCollapsed}>
-      <SearchFieldWrapper>
-        {props.roadmapCollapsed ? <SearchFieldCollapsed /> : <SearchField />}
-      </SearchFieldWrapper>
-      <RoadmapsList roadlist={listRoadmaps} />
-      <FloatButtonWrapper>
-        <DefaultButton text="New Roadmap"/>
-      </FloatButtonWrapper>
+      {props.roadmapCollapsed ? RoadmapsCollapsed() : RoadmapsExpanded()}
     </MainWrapper>
   );
 }
 
 function mapStateToProps(state) {
   return {
-    roadmapCollapsed: state.growBoardReducer.roadmapCollapsed
+    roadmapCollapsed: state.growBoardReducer.roadmapCollapsed,
   };
 }
 
