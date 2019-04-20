@@ -8,12 +8,29 @@ import { updateRoadmapCollapsedState } from '../../ducks/growBoard';
 const ModulesWrapper = styled.div`
   width: ${props => (props.hoveredRoadlist ? '25vw' : '23vw')};
   background: #fff;
+  overflow-y: scroll;
+  height: 100vh;
   z-index: 2;
   position: relative;
   -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
+
+  ::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #fff;
+  }
+
+  ::-webkit-scrollbar {
+    width: 9px;
+    background-color: #ecedef;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #ecedef;
+  }
 `;
 
 const ModulesTitleWrapper = styled.div`
@@ -42,6 +59,7 @@ const NewModuleWrapper = styled.div`
 
 const CardListWrapper = styled.div`
   padding: 0px 25px;
+  overflow: hidden;
 `;
 
 const DraggablesHolder = styled.div``;
@@ -158,7 +176,62 @@ class Modules extends Component {
     });
   };
 
+  updateSelectedModule = value => {};
+
+  handleHasContent = () => {
+    return (
+      <CardListWrapper>
+        <DragDropContext onDragEnd={this.onDragEnd}>
+          <Droppable droppableId="droppable">
+            {(provided, snapshot) => (
+              <DraggablesHolder
+                {...provided.droppableProps}
+                ref={provided.innerRef}
+                isDraggingOver={snapshot.isDraggingOver}
+              >
+                {this.state.moduleList &&
+                  this.state.moduleList.map((item, index) => (
+                    <Draggable
+                      key={item.id}
+                      draggableId={item.id}
+                      index={index}
+                      onClick={() => this.updateSelectedModule(item.id)}
+                    >
+                      {(provided, snapshot) => (
+                        <ItemDraggableWrapper
+                          ref={provided.innerRef}
+                          {...provided.draggableProps}
+                          {...provided.dragHandleProps}
+                          isDragging={snapshot.isDragging}
+                        >
+                          <IconHolder>
+                            <DragIcon />
+                          </IconHolder>
+                          <div>
+                            <h1>{item.title}</h1>
+                            <h2>{item.description}</h2>
+                          </div>
+                        </ItemDraggableWrapper>
+                      )}
+                    </Draggable>
+                  ))}
+                {provided.placeholder}
+              </DraggablesHolder>
+            )}
+          </Droppable>
+        </DragDropContext>
+      </CardListWrapper>
+    );
+  };
+
+  handleHasNoContent = () => {
+    return(
+      "a"
+    )
+  }
+
   render() {
+    console.log('asd', this.props.dataFromSelectedRoadmap);
     return (
       <ModulesWrapper hoveredRoadlist={this.state.RoadlistCollapsibleHovered}>
         <RoadmapCollapsibleElement
@@ -170,46 +243,7 @@ class Modules extends Component {
         <ModulesTitleWrapper>
           {this.props.dataFromSelectedRoadmap.name} Modules
         </ModulesTitleWrapper>
-        <CardListWrapper>
-          <DragDropContext onDragEnd={this.onDragEnd}>
-            <Droppable droppableId="droppable">
-              {(provided, snapshot) => (
-                <DraggablesHolder
-                  {...provided.droppableProps}
-                  ref={provided.innerRef}
-                  isDraggingOver={snapshot.isDraggingOver}
-                >
-                  {this.state.moduleList &&
-                    this.state.moduleList.map((item, index) => (
-                      <Draggable
-                        key={item.id}
-                        draggableId={item.id}
-                        index={index}
-                      >
-                        {(provided, snapshot) => (
-                          <ItemDraggableWrapper
-                            ref={provided.innerRef}
-                            {...provided.draggableProps}
-                            {...provided.dragHandleProps}
-                            isDragging={snapshot.isDragging}
-                          >
-                            <IconHolder>
-                              <DragIcon />
-                            </IconHolder>
-                            <div>
-                              <h1>{item.title}</h1>
-                              <h2>{item.description}</h2>
-                            </div>
-                          </ItemDraggableWrapper>
-                        )}
-                      </Draggable>
-                    ))}
-                  {provided.placeholder}
-                </DraggablesHolder>
-              )}
-            </Droppable>
-          </DragDropContext>
-        </CardListWrapper>
+          {this.props.dataFromSelectedRoadmap.length === 0 ? this.handleHasNoContent() : this.handleHasContent()}
       </ModulesWrapper>
     );
   }
@@ -219,13 +253,15 @@ function mapStateToProps(state) {
   return {
     selectedRoadmap: state.growBoardReducer.selectedRoadmap,
     dataFromSelectedRoadmap: state.growBoardReducer.dataFromSelectedRoadmap,
-    roadmapCollapsed: state.growBoardReducer.roadmapCollapsed
+    roadmapCollapsed: state.growBoardReducer.roadmapCollapsed,
   };
 }
 
 const mapDispatchToProps = {
   updateRoadmapCollapsedState,
-}
+};
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(Modules);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Modules);
