@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import HelpIcon from '../../../static/icons/information.svg';
+let _ = require('lodash');
+import { AvaliablesRoadmaps } from '../../../libs/avaliable-roadmaps';
+import { GreenButton } from '../../Common/Button';
 
 const NewRoadmapWrapper = styled.div``;
 
@@ -67,21 +70,110 @@ const AutoCompleteShadow = styled.div`
   pointer-events: none;
 `;
 
-export default function NewRoadmap() {
-  const [ DataSourceRoadmaps, setDataSourceRoadmaps] = useState(['Java', 'Javascript', 'Node.js']); 
-  const [AutoCompleteInput, setAutoCompleteInput] = useState(''); 
+const AvaliableRoadmapsWrapper = styled.div`
+  padding-top: 35px;
+  span {
+    font-size: 13px;
+    font-weight: 500;
+  }
+  hr {
+    border: none;
+    border-bottom: 2px solid #6745f9;
+  }
+`;
 
-  function verifyDisponibilityResult(){
-    if(AutoCompleteInput){
-      return _.find(DataSourceRoadmaps, o => {
-        return _.includes(o, AutoCompleteInput);
+const AvaliableList = styled.div`
+  height: 50vh;
+  overflow-y: scroll;
+  ::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #3915d9;
+  }
+
+  ::-webkit-scrollbar {
+    width: 9px;
+    background-color: #3915d9;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #2f10b9;
+  }
+`;
+
+const ItemListRoadmap = styled.div`
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  padding: 10px 5px;
+  transition: all 0.3s ease;
+  background: ${props => (props.selected ? '#3e24da' : 'transparent')};
+  svg {
+    fill: #5371f3;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    path {
+      fill: #5371f3;
+    }
+  }
+  :hover {
+    background: #3e24da;
+    cursor: pointer;
+  }
+`;
+
+const NewRoadmapButtonWrapper = styled.div`
+  position: absolute;
+  bottom: 15px;
+  width: 17vw;
+`;
+
+export default function NewRoadmap() {
+  const [AutoCompleteInput, setAutoCompleteInput] = useState('');
+  const [AvaliableRoadmapList, setAvaliableRoadmapList] = useState(
+    AvaliablesRoadmaps
+  );
+
+  function verifyDisponibilityResult() {
+    if (AutoCompleteInput) {
+      const LanguagueFind = _.find(AvaliableRoadmapList, o => {
+        return _.includes(o.name, AutoCompleteInput);
       });
+      return LanguagueFind ? LanguagueFind.name : '';
     }
   }
 
-  function handleAutoCompleteSelection(key){
+  function handleUpdateInputValue(value) {
+    setAutoCompleteInput(value);
+    if (value) {
+      const ListFind = _.filter(AvaliableRoadmapList, o => {
+        return _.includes(o.name, AutoCompleteInput);
+      });
+      setAvaliableRoadmapList(ListFind);
+    } else {
+      setAvaliableRoadmapList(AvaliablesRoadmaps);
+    }
+  }
+
+  function handleAutoCompleteSelection(key) {
     key === 'Enter' && setAutoCompleteInput(verifyDisponibilityResult());
   }
+
+  function handleListRoadmapsAvaliable() {
+    return AvaliableRoadmapList.map(roadmap => {
+      return (
+        <ItemListRoadmap
+          key={roadmap.id}
+          selected={roadmap.name === AutoCompleteInput}
+          onClick={() => setAutoCompleteInput(roadmap.name)}
+        >
+          {roadmap.iconName} {roadmap.name}
+        </ItemListRoadmap>
+      );
+    });
+  }
+
   return (
     <NewRoadmapWrapper>
       <HeaderWrapper>
@@ -98,13 +190,19 @@ export default function NewRoadmap() {
           <span>Nome da Linguagem?</span>
           <input
             value={AutoCompleteInput}
-            onChange={e => setAutoCompleteInput(e.target.value)}
+            onChange={e => handleUpdateInputValue(e.target.value)}
             onKeyPress={e => handleAutoCompleteSelection(e.key)}
           />
-          <AutoCompleteShadow>
-            {verifyDisponibilityResult()}
-          </AutoCompleteShadow>
+          <AutoCompleteShadow>{verifyDisponibilityResult()}</AutoCompleteShadow>
         </AutoCompleteWrapper>
+        <AvaliableRoadmapsWrapper>
+          <span>Roadmaps Disponíveis</span>
+          <hr />
+          <AvaliableList>{handleListRoadmapsAvaliable()}</AvaliableList>
+        </AvaliableRoadmapsWrapper>
+        <NewRoadmapButtonWrapper>
+          <GreenButton text="Novo Roadmap" />
+        </NewRoadmapButtonWrapper>
       </ContentWrapper>
     </NewRoadmapWrapper>
   );
