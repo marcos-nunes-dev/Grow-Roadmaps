@@ -20,7 +20,8 @@ const RightBar = styled.div`
   align-items: center;
   justify-content: space-between;
   flex-direction: column;
-`
+  z-index: 9999;
+`;
 
 function DefaultWrapper(props) {
   return (

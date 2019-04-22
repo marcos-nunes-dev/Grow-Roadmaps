@@ -1,25 +1,52 @@
-html, body{
+html,
+body {
   font-family: 'Fira Sans', sans-serif !important;
   margin: 0 !important;
 }
 
-h1,h2,h3,h4,h5,h6,p,span{
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span {
   font-family: 'Fira Sans', sans-serif !important;
 }
 
-html{
+html {
   line-height: 1.15 !important;
 }
 
-body{
+body {
   line-height: 1.15 !important;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   -webkit-box-sizing: initial !important;
   box-sizing: initial !important;
 }
 
-.ant-table-thead > tr.ant-table-row-hover:not(.ant-table-expanded-row) > td, .ant-table-tbody > tr.ant-table-row-hover:not(.ant-table-expanded-row) > td, .ant-table-thead > tr:hover:not(.ant-table-expanded-row) > td, .ant-table-tbody > tr:hover:not(.ant-table-expanded-row) > td {
+.ant-table-thead > tr.ant-table-row-hover:not(.ant-table-expanded-row) > td,
+.ant-table-tbody > tr.ant-table-row-hover:not(.ant-table-expanded-row) > td,
+.ant-table-thead > tr:hover:not(.ant-table-expanded-row) > td,
+.ant-table-tbody > tr:hover:not(.ant-table-expanded-row) > td {
   background: #fdfdfd !important;
+}
+
+.ant-drawer.ant-drawer-open .ant-drawer-mask {
+  opacity: 0 !important;
+  background-color: transparent !important;
+}
+
+.ant-drawer-content-wrapper {
+}
+
+.ant-drawer-content {
+  background-color: #4427f1 !important;
+  padding-left: 4vw;
+  color: #fff;
 }
