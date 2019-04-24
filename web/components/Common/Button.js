@@ -74,6 +74,22 @@ const BorderedButtonWrapper = styled.div`
   }
 `;
 
+const  GreenButtonWrapper = styled.div`
+  background: #02e04d;
+  color: #fff;
+  padding: 10px;
+  border-radius: 100px;
+  text-align: center;
+  -webkit-box-shadow: 0px 0px 17px -4px rgba(2, 224, 77, 0.65);
+  -moz-box-shadow: 0px 0px 17px -4px rgba(2, 224, 77, 0.65);
+  box-shadow: 0px 0px 17px -4px rgba(2, 224, 77, 0.65);
+  font-size: 14px;
+
+  :hover {
+    cursor: pointer;
+  }
+`;
+
 export function DefaultButton(props) {
   return (
     <DefaultButtonWrapper>{props.text}</DefaultButtonWrapper>
@@ -95,4 +111,8 @@ export function StrikeButton() {
 
 export function BorderedButton(props) {
   return <BorderedButtonWrapper>{props.text}</BorderedButtonWrapper>;
+}
+
+export function GreenButton(props) {
+  return <GreenButtonWrapper>{props.text}</GreenButtonWrapper>;
 }
