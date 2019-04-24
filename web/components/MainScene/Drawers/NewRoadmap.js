@@ -138,9 +138,12 @@ export default function NewRoadmap() {
   function verifyDisponibilityResult() {
     if (AutoCompleteInput) {
       const LanguagueFind = _.find(AvaliableRoadmapList, o => {
-        return _.includes(o.name, AutoCompleteInput);
+        return _.startsWith(
+          o.name.toLowerCase(),
+          AutoCompleteInput.toLowerCase()
+        );
       });
-      return LanguagueFind ? LanguagueFind.name : '';
+      return LanguagueFind ? jsUcFirst(LanguagueFind.name) : '';
     }
   }
 
@@ -148,7 +151,10 @@ export default function NewRoadmap() {
     setAutoCompleteInput(value);
     if (value) {
       const ListFind = _.filter(AvaliableRoadmapList, o => {
-        return _.includes(o.name, AutoCompleteInput);
+        return _.includes(
+          o.name.toLowerCase(),
+          AutoCompleteInput.toLowerCase()
+        );
       });
       setAvaliableRoadmapList(ListFind);
     } else {
@@ -174,6 +180,10 @@ export default function NewRoadmap() {
     });
   }
 
+  function jsUcFirst(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
   return (
     <NewRoadmapWrapper>
       <HeaderWrapper>
@@ -189,7 +199,7 @@ export default function NewRoadmap() {
         <AutoCompleteWrapper>
           <span>Nome da Linguagem?</span>
           <input
-            value={AutoCompleteInput}
+            value={jsUcFirst(AutoCompleteInput)}
             onChange={e => handleUpdateInputValue(e.target.value)}
             onKeyPress={e => handleAutoCompleteSelection(e.key)}
           />
