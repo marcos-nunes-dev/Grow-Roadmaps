@@ -1,15 +1,54 @@
-# Use the latest 2.1 version of CircleCI pipeline processing engine, see https://circleci.com/docs/2.0/configuration-reference/
 version: 2.1
+jobs:
+  build:
+    docker:
+      - image: circleci/node:8
+    steps:
+    - checkout
+    - run: cd web
+    - restore_cache:
+        key: yarn-v1-{{ checksum "yarn.lock" }}-{{ arch }}
+    - restore_cache:
+        key: node-v1-{{ checksum "package.json" }}-{{ arch }}
+    - run: yarn install
+    - save_cache:
+          key: yarn-v1-{{ checksum "yarn.lock" }}-{{ arch }}
+          paths:
+            - ~/.cache/yarn
+      - save_cache:
+          key: node-v1-{{ checksum "package.json" }}-{{ arch }}
+          paths:
+            - node_modules
+       - persist_to_workspace:
+          root: .
+          paths:
+            - node_modules
+ test:
+    docker:
+      - image: circleci/node:8
+    steps:
+      - checkout
+      - run: cd web
+      - restore_cache:
+          key: yarn-v1-{{ checksum "yarn.lock" }}-{{ arch }}
+      - restore_cache:
+          key: node-v1-{{ checksum "package.json" }}-{{ arch }}
+      - run: yarn install
+      - save_cache:
+          key: yarn-v1-{{ checksum "yarn.lock" }}-{{ arch }}
+          paths:
+            - ~/.cache/yarn
+      - save_cache:
+          key: node-v1-{{ checksum "package.json" }}-{{ arch }}
+          paths:
+            - node_modules   
+      - persist_to_workspace:
+          root: .
+          paths:
+            - node_modules     
 
-# Use a package of configuration called an orb, see https://circleci.com/docs/2.0/orb-intro/
-orbs:
-  # Declare a dependency on the welcome-orb
-  welcome: circleci/welcome-orb@0.3.1
-
-# Orchestrate or schedule a set of jobs, see https://circleci.com/docs/2.0/workflows/
 workflows:
-  # Name the workflow "Welcome"
-  Welcome:
-    # Run the welcome/run job in its own container
+  Build_and_Test:
     jobs:
-      - welcome/run
+      - build
+      - test
