@@ -4,20 +4,19 @@ jobs:
     docker:
       - image: circleci/node:8
     steps:
+      - checkout
 
-    - checkout
+      - run: cd web
 
-    - run: cd web
-    
-    - restore_cache:
-        key: yarn-v1-{{ checksum "yarn.lock" }}-{{ arch }}
+      - restore_cache:
+          key: yarn-v1-{{ checksum "yarn.lock" }}-{{ arch }}
 
-    - restore_cache:
-        key: node-v1-{{ checksum "package.json" }}-{{ arch }}
+      - restore_cache:
+          key: node-v1-{{ checksum "package.json" }}-{{ arch }}
 
-    - run: yarn install
+      - run: yarn install
 
-    - save_cache:
+      - save_cache:
           key: yarn-v1-{{ checksum "yarn.lock" }}-{{ arch }}
           paths:
             - ~/.cache/yarn
@@ -27,36 +26,43 @@ jobs:
           paths:
             - node_modules
 
-       - persist_to_workspace:
+      - persist_to_workspace:
           root: .
           paths:
             - node_modules
- test:
+  test:
     docker:
       - image: circleci/node:8
     steps:
       - checkout
+
       - run: cd web
+
       - restore_cache:
           key: yarn-v1-{{ checksum "yarn.lock" }}-{{ arch }}
+
       - restore_cache:
           key: node-v1-{{ checksum "package.json" }}-{{ arch }}
+
       - run: yarn install
+
       - save_cache:
           key: yarn-v1-{{ checksum "yarn.lock" }}-{{ arch }}
           paths:
             - ~/.cache/yarn
+
       - save_cache:
           key: node-v1-{{ checksum "package.json" }}-{{ arch }}
           paths:
-            - node_modules   
+            - node_modules
+
       - persist_to_workspace:
           root: .
           paths:
-            - node_modules     
-
+            - node_modules
+      
 workflows:
-  Build_and_Test:
+  build_and_test:
     jobs:
       - build
       - test
