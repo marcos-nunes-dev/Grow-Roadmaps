@@ -6,28 +6,26 @@ jobs:
     steps:
       - checkout
 
-      - run: cd web
+      - restore_cache:
+          key: yarn-v1-{{ checksum "web/yarn.lock" }}-{{ arch }}
 
       - restore_cache:
-          key: yarn-v1-{{ checksum "yarn.lock" }}-{{ arch }}
+          key: node-v1-{{ checksum "web/package.json" }}-{{ arch }}
 
-      - restore_cache:
-          key: node-v1-{{ checksum "package.json" }}-{{ arch }}
-
-      - run: yarn install
+      - run: cd web && yarn install
 
       - save_cache:
-          key: yarn-v1-{{ checksum "yarn.lock" }}-{{ arch }}
+          key: yarn-v1-{{ checksum "web/yarn.lock" }}-{{ arch }}
           paths:
-            - ~/.cache/yarn
+            - ~/web/.cache/yarn
 
       - save_cache:
-          key: node-v1-{{ checksum "package.json" }}-{{ arch }}
+          key: node-v1-{{ checksum "web/package.json" }}-{{ arch }}
           paths:
             - node_modules
 
       - persist_to_workspace:
-          root: .
+          root: ./web
           paths:
             - node_modules
   test:
@@ -36,28 +34,26 @@ jobs:
     steps:
       - checkout
 
-      - run: cd web
+      - restore_cache:
+          key: yarn-v1-{{ checksum "web/yarn.lock" }}-{{ arch }}
 
       - restore_cache:
-          key: yarn-v1-{{ checksum "yarn.lock" }}-{{ arch }}
+          key: node-v1-{{ checksum "web/package.json" }}-{{ arch }}
 
-      - restore_cache:
-          key: node-v1-{{ checksum "package.json" }}-{{ arch }}
-
-      - run: yarn install
+      - run: cd web && yarn install
 
       - save_cache:
-          key: yarn-v1-{{ checksum "yarn.lock" }}-{{ arch }}
+          key: yarn-v1-{{ checksum "web/yarn.lock" }}-{{ arch }}
           paths:
-            - ~/.cache/yarn
+            - ~/web/.cache/yarn
 
       - save_cache:
-          key: node-v1-{{ checksum "package.json" }}-{{ arch }}
+          key: node-v1-{{ checksum "web/package.json" }}-{{ arch }}
           paths:
             - node_modules
 
       - persist_to_workspace:
-          root: .
+          root: ./web
           paths:
             - node_modules
       
