@@ -75,7 +75,9 @@ const BorderedButtonWrapper = styled.div`
 `;
 
 export function DefaultButton(props) {
-  return <DefaultButtonWrapper>{props.text}</DefaultButtonWrapper>;
+  return (
+    <DefaultButtonWrapper>{props.text}</DefaultButtonWrapper>
+  );
 }
 
 //Should receive props voted
