@@ -176,8 +176,6 @@ class Modules extends Component {
     });
   };
 
-  updateSelectedModule = value => {};
-
   handleHasContent = () => {
     return (
       <CardListWrapper>
@@ -226,12 +224,11 @@ class Modules extends Component {
 
   handleHasNoContent = () => {
     return(
-      "a"
+      'a'
     )
   }
 
   render() {
-    console.log('asd', this.props.dataFromSelectedRoadmap);
     return (
       <ModulesWrapper hoveredRoadlist={this.state.RoadlistCollapsibleHovered}>
         <RoadmapCollapsibleElement
