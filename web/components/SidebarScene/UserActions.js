@@ -32,7 +32,7 @@ const Arrow = styled.div`
   }
 `;
 
-export default function UserActions(props) {
+export default function UserActions() {
   return (
     <UserActionsWrapper>
       <AvatarWrapper>

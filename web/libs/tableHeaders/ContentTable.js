@@ -62,13 +62,13 @@ export const ContentColumnsData = [
     title: 'Link',
     dataIndex: 'link',
     key: 'link',
-    render: text => <LinkStyled>Link</LinkStyled>
+    render: () => <LinkStyled>Link</LinkStyled>
   },
   {
     title: 'Rating',
     dataIndex: 'rating',
     key: 'rating',
-    render: text => <ActionsWrapper><UpvoteButton voted={false} voteCount={44}/><StrikeButton/></ActionsWrapper>
+    render: () => <ActionsWrapper><UpvoteButton voted={false} voteCount={44}/><StrikeButton/></ActionsWrapper>
   },
 ];
 

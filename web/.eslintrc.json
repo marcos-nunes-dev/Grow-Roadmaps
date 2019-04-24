@@ -15,6 +15,10 @@
   "plugins": [
     "react"
   ],
+  "settings": {
+    "pragma": "React",
+    "version": "detect"
+  },
   "globals": {
     "document": true,
     "window": true,
