@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import HelpIcon from '../../../static/icons/information.svg';
-let _ = require('lodash');
 import { AvaliablesRoadmaps } from '../../../libs/avaliable-roadmaps';
 import { GreenButton } from '../../Common/Button';
+let _ = require('lodash');
 
 const NewRoadmapWrapper = styled.div``;
 
