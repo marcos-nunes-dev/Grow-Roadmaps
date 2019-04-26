@@ -119,6 +119,28 @@ const RoadmapCollapsibleElement = styled.div`
   }
 `;
 
+const SkeletonWrapper = styled.div`
+  padding: 0px 25px;
+  overflow: hidden;
+  height: 85%;
+`;
+
+const SkeletonCard = styled.div`
+  background: #ecedef;
+  border-radius: 5px;
+  width: 100%;
+  height: 9%;
+  margin-bottom: 20px;  
+  background: -webkit-gradient(linear, left top, right top, color-stop(25%, #f2f2f2), color-stop(37%, #e6e6e6), color-stop(63%, #f2f2f2));
+  background: -webkit-linear-gradient(left, #f2f2f2 25%, #e6e6e6 37%, #f2f2f2 63%);
+  background: linear-gradient(90deg, #f2f2f2 25%, #e6e6e6 37%, #f2f2f2 63%);
+  background-size: 400% 100%;
+  -webkit-animation: ant-skeleton-loading 1.4s ease infinite;
+  animation: ant-skeleton-loading 1.4s ease infinite;
+}
+
+`;
+
 const reorder = (list, startIndex, endIndex) => {
   const result = Array.from(list);
   const [removed] = result.splice(startIndex, 1);
@@ -223,10 +245,19 @@ class Modules extends Component {
   };
 
   handleHasNoContent = () => {
-    return(
-      'a'
-    )
-  }
+    return (
+      <SkeletonWrapper>
+        <SkeletonCard />
+        <SkeletonCard />
+        <SkeletonCard />
+        <SkeletonCard />
+        <SkeletonCard />
+        <SkeletonCard />
+        <SkeletonCard />
+        <SkeletonCard />
+      </SkeletonWrapper>
+    );
+  };
 
   render() {
     return (
@@ -240,7 +271,9 @@ class Modules extends Component {
         <ModulesTitleWrapper>
           {this.props.dataFromSelectedRoadmap.name} Modules
         </ModulesTitleWrapper>
-          {this.props.dataFromSelectedRoadmap.length === 0 ? this.handleHasNoContent() : this.handleHasContent()}
+        {this.props.dataFromSelectedRoadmap.length === 0
+          ? this.handleHasNoContent()
+          : this.handleHasContent()}
       </ModulesWrapper>
     );
   }
