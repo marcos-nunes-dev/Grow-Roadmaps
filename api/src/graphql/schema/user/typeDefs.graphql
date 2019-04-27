@@ -1,0 +1,29 @@
+type User {
+  id: ID!
+  name: String
+  pictureUrl: String
+  email: String
+  points: Int
+  asAdmin: Admin
+}
+
+input RegisterUserInput {
+  email: String!
+  deviceToken: String!
+  password: String!
+}
+
+input UpdateUserFCMTokenInput {
+  token: String!
+}
+
+type Query {
+  me: User
+  userById(userId: String!): User
+  userByEmail(userEmail: String!): User
+}
+
+type Mutation {
+  registerUser(input: RegisterUserInput!): User
+  updateUserFCMToken(input: UpdateUserFCMTokenInput!): Boolean
+}

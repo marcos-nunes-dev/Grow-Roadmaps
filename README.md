@@ -20,11 +20,21 @@ Para programadores já consolidados no mercado, o @Grow é uma ótima forma de s
 
 ## Instalação :smiley_cat:
 Primeiro tenha certeza que você tem instado o [Yarn](https://yarnpkg.com) instalado em seu computador.
-Em seguida navegue até a pasta do seu desejo (Web ou API) e:
+Em seguida navegue até a pasta Web e:
 
     yarn
 
 Para instalar as dependências e em seguida:
+
+    yarn dev
+
+Para o setup da API você deve seguir com:
+
+    yarn
+
+Crie um arquivo .env na raiz da pasta API seguindo arquivo `.env-sample`, se
+for a primeira vez executando a aplicação certifique se de ter instalado o PostgreSQL e criar
+um schema chamado `grow_roadmaps`. Mude as configurações de `usuario e senha` se necessário em `api/src/config/sequelize.config.js`. Com tudo pronto agora você pode:
 
     yarn dev
 
