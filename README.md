@@ -38,7 +38,11 @@ um schema chamado `grow_roadmaps`. Mude as configurações de `usuario e senha` 
 
     yarn dev
 
-e Mãos a massa! 
+e Mãos a massa! Ahh se precisar, não esqueça: 
+
+    http://localhost:4100/graphql
+
+para ver a documentação de queries, mutations e subscriptions. 
 
 ## Reporte um bug  :shit:
 

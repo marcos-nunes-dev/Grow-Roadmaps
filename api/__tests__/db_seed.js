@@ -28,7 +28,6 @@ export default function seed(models) {
       { logging: false }
     )
       .then(() => {
-        // TODO: we should create this on server install
         return models.CategoryDefault.create();
       })
       // Suppress errors
