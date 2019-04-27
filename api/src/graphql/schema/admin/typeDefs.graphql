@@ -1,0 +1,13 @@
+type Admin {
+  id: ID!
+  user: User!
+  occupation: String
+}
+
+input CreateAdminInput {
+  userId: ID!
+}
+
+type Mutation {
+  createAdmin(input: CreateAdminInput!): Admin
+}
