@@ -3,7 +3,7 @@ type User {
   name: String
   pictureUrl: String
   email: String
-  points: Int
+  points: String
   asAdmin: Admin
 }
 
