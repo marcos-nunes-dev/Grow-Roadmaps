@@ -1,0 +1,30 @@
+type Roadmap {
+  id: ID!
+  name: String!
+  icon: String
+  createdby: String
+  modules: [Module]!
+  active: Boolean
+}
+
+input CreateRoadmapInput {
+  name: String!
+  icon: String
+  createdby: String
+  active: Boolean
+}
+
+input SetToActiveRoadmapInput {
+  roadmapId: ID!
+  active: Boolean
+}
+
+type Query {
+  RoadmapById(roadmapId: String!): Roadmap
+  RoadmapByActive(active: Boolean!): Roadmap
+}
+
+type Mutation {
+  createNewRoadmap(input: CreateRoadmapInput!): Roadmap
+  setToActiveRoadmap(input: SetToActiveRoadmapInput!): Roadmap
+}

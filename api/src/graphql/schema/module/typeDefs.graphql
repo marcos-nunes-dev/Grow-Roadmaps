@@ -1,0 +1,12 @@
+type Module {
+  id: ID!
+  name: String!
+  description: String
+  createdby: String
+  order: String
+}
+
+type Query {
+  allModules: [Module!]!
+}
+

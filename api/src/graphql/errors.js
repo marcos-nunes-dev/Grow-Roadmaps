@@ -39,3 +39,8 @@ export const UserNotFound = createError('UserNotFound', {
 export const UserAlreadyExists = createError('UserAlreadyExists', {
   message: 'An user already exists with the given data',
 });
+
+// Returns if the Roadmap name already exists
+export const RoadmapAlreadyExists = createError('RoadmapAlreadyExists', {
+  message: 'An roadmap already exists with the given name',
+});
