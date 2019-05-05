@@ -28,15 +28,15 @@ function DefaultWrapper(props) {
     <MainWrapper>
       <RightBar>
         <LogoWrapper>
-          <Logo type="icon"/>
+          <Logo type="icon" />
         </LogoWrapper>
         <UserActionsWrapper>
-          <UserActions/>
+          {props.loggedin && <UserActions />}
         </UserActionsWrapper>
-      </RightBar> 
+      </RightBar>
       {props.children}
     </MainWrapper>
-  )
+  );
 }
 
 export default DefaultWrapper

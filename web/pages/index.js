@@ -6,7 +6,7 @@ import Roadmaps from '../components/MainScene/Roadmaps';
 
 export default function index() {
   return (
-    <Wrapper>
+    <Wrapper loggedin>
       <Roadmaps />
       <Modules />
       <Content />
