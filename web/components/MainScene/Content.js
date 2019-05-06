@@ -4,6 +4,7 @@ import EditIcon from '../../static/icons/edit.svg';
 import { BorderedButton } from '../Common/Button';
 import TableContent from '../MainScene/TableContent';
 import { connect } from 'react-redux';
+import EmptyIcon from '../../static/icons/road-adetour.svg';
 
 const ContentWrapper = styled.div`
   max-height: 100vh;
@@ -69,25 +70,67 @@ const ButtonsArea = styled.div`
   align-items: flex-end;
 `;
 
+const EmptyWrapper = styled.div`
+  padding: 0px 25px;
+  overflow: hidden;
+  height: 100%;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  svg {
+    width: 15%;
+    height: auto;
+    opacity: 0.1;
+  }
+  h1 {
+    color: #d6d6d6;
+    font-size: 17px;
+    font-weight: 400;
+    margin-top: 20px;
+  }
+  p {
+    color: #d6d6d6;
+    font-size: 14px;
+    font-weight: 200;
+  }
+`;
+
 class Content extends Component {
+  handleHasContent = () => {
+    return (
+      <UtilArea>
+        <ActionArea>
+          <TitleArea>
+            <div>
+              <p>Javascript Roadmap</p>
+              <h1>Basic Concepts</h1>
+            </div>
+            <EditIcon />
+          </TitleArea>
+          <ButtonsArea>
+            <BorderedButton text="Mark as Learned" />
+          </ButtonsArea>
+        </ActionArea>
+        <TableContent />
+      </UtilArea>
+    );
+  }
+
+  handleHasNoContent = () => {
+    return (
+      <EmptyWrapper>
+        <EmptyIcon />
+        <h1>Selecione um Módulo</h1>
+        <p>Escolha ao lado o Módulo que você deseja</p>
+      </EmptyWrapper>
+    );
+  }
+
   render() {
     return (
       <ContentWrapper collapsedRoadmap={this.props.roadmapCollapsed}>
-        <UtilArea>
-          <ActionArea>
-            <TitleArea>
-              <div>
-                <p>Javascript Roadmap</p>
-                <h1>Basic Concepts</h1>
-              </div>
-              <EditIcon />
-            </TitleArea>
-            <ButtonsArea>
-              <BorderedButton text="Mark as Learned" />
-            </ButtonsArea>
-          </ActionArea>
-          <TableContent />
-        </UtilArea>
+        {this.props.hasContent ? this.handleHasContent() : this.handleHasNoContent()}
       </ContentWrapper>
     );
   }

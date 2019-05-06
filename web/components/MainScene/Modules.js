@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import DragIcon from '../../static/icons/menu.svg';
 import { updateRoadmapCollapsedState } from '../../ducks/growBoard';
+import EmptyIcon from '../../static/icons/road-adetours.svg';
 
 const ModulesWrapper = styled.div`
   width: ${props => (props.hoveredRoadlist ? '25vw' : '23vw')};
@@ -119,6 +120,32 @@ const RoadmapCollapsibleElement = styled.div`
   }
 `;
 
+const EmptyWrapper = styled.div`
+  padding: 0px 25px;
+  overflow: hidden;
+  height: 100%;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  svg {
+    width: 30%;
+    height: auto;
+    opacity: 0.1;
+  }
+  h1 {
+    color: #d6d6d6;
+    font-size: 17px;
+    font-weight: 400;
+    margin-top: 20px;
+  }
+  p {
+    color: #d6d6d6;
+    font-size: 14px;
+    font-weight: 200;
+  }
+`;
+
 const SkeletonWrapper = styled.div`
   padding: 0px 25px;
   overflow: hidden;
@@ -131,14 +158,13 @@ const SkeletonCard = styled.div`
   width: 100%;
   height: 9%;
   margin-bottom: 20px;  
+  animation: ant-skeleton-loading 1.4s ease infinite;
   background: -webkit-gradient(linear, left top, right top, color-stop(25%, #f2f2f2), color-stop(37%, #e6e6e6), color-stop(63%, #f2f2f2));
   background: -webkit-linear-gradient(left, #f2f2f2 25%, #e6e6e6 37%, #f2f2f2 63%);
   background: linear-gradient(90deg, #f2f2f2 25%, #e6e6e6 37%, #f2f2f2 63%);
   background-size: 400% 100%;
   -webkit-animation: ant-skeleton-loading 1.4s ease infinite;
-  animation: ant-skeleton-loading 1.4s ease infinite;
 }
-
 `;
 
 const reorder = (list, startIndex, endIndex) => {
@@ -200,51 +226,62 @@ class Modules extends Component {
 
   handleHasContent = () => {
     return (
-      <CardListWrapper>
-        <DragDropContext onDragEnd={this.onDragEnd}>
-          <Droppable droppableId="droppable">
-            {(provided, snapshot) => (
-              <DraggablesHolder
-                {...provided.droppableProps}
-                ref={provided.innerRef}
-                isDraggingOver={snapshot.isDraggingOver}
-              >
-                {this.state.moduleList &&
-                  this.state.moduleList.map((item, index) => (
-                    <Draggable
-                      key={item.id}
-                      draggableId={item.id}
-                      index={index}
-                      onClick={() => this.updateSelectedModule(item.id)}
-                    >
-                      {(provided, snapshot) => (
-                        <ItemDraggableWrapper
-                          ref={provided.innerRef}
-                          {...provided.draggableProps}
-                          {...provided.dragHandleProps}
-                          isDragging={snapshot.isDragging}
-                        >
-                          <IconHolder>
-                            <DragIcon />
-                          </IconHolder>
-                          <div>
-                            <h1>{item.title}</h1>
-                            <h2>{item.description}</h2>
-                          </div>
-                        </ItemDraggableWrapper>
-                      )}
-                    </Draggable>
-                  ))}
-                {provided.placeholder}
-              </DraggablesHolder>
-            )}
-          </Droppable>
-        </DragDropContext>
-      </CardListWrapper>
+      <>
+        <RoadmapCollapsibleElement
+          onClick={() => this.props.updateRoadmapCollapsedState()}
+          onMouseOver={() => this.handleHoverRoadlist(true)}
+          onMouseOut={() => this.handleHoverRoadlist(false)}
+        />
+        <NewModuleWrapper>+</NewModuleWrapper>
+        <ModulesTitleWrapper>
+          {this.props.dataFromSelectedRoadmap.name} Modules
+        </ModulesTitleWrapper>
+        <CardListWrapper>
+          <DragDropContext onDragEnd={this.onDragEnd}>
+            <Droppable droppableId="droppable">
+              {(provided, snapshot) => (
+                <DraggablesHolder
+                  {...provided.droppableProps}
+                  ref={provided.innerRef}
+                  isDraggingOver={snapshot.isDraggingOver}
+                >
+                  {this.state.moduleList &&
+                    this.state.moduleList.map((item, index) => (
+                      <Draggable
+                        key={item.id}
+                        draggableId={item.id}
+                        index={index}
+                        onClick={() => this.updateSelectedModule(item.id)}
+                      >
+                        {(provided, snapshot) => (
+                          <ItemDraggableWrapper
+                            ref={provided.innerRef}
+                            {...provided.draggableProps}
+                            {...provided.dragHandleProps}
+                            isDragging={snapshot.isDragging}
+                          >
+                            <IconHolder>
+                              <DragIcon />
+                            </IconHolder>
+                            <div>
+                              <h1>{item.title}</h1>
+                              <h2>{item.description}</h2>
+                            </div>
+                          </ItemDraggableWrapper>
+                        )}
+                      </Draggable>
+                    ))}
+                  {provided.placeholder}
+                </DraggablesHolder>
+              )}
+            </Droppable>
+          </DragDropContext>
+        </CardListWrapper>
+      </>
     );
   };
 
-  handleHasNoContent = () => {
+  handleLoadingContent = () => {
     return (
       <SkeletonWrapper>
         <SkeletonCard />
@@ -259,18 +296,19 @@ class Modules extends Component {
     );
   };
 
+  handleHasNoContent = () => {
+    return (
+      <EmptyWrapper>
+        <EmptyIcon />
+        <h1>Selecione um Roadmap</h1>
+        <p>Escolha ao lado o roadmap que você deseja</p>
+      </EmptyWrapper>
+    );
+  };
+
   render() {
     return (
       <ModulesWrapper hoveredRoadlist={this.state.RoadlistCollapsibleHovered}>
-        <RoadmapCollapsibleElement
-          onClick={() => this.props.updateRoadmapCollapsedState()}
-          onMouseOver={() => this.handleHoverRoadlist(true)}
-          onMouseOut={() => this.handleHoverRoadlist(false)}
-        />
-        <NewModuleWrapper>+</NewModuleWrapper>
-        <ModulesTitleWrapper>
-          {this.props.dataFromSelectedRoadmap.name} Modules
-        </ModulesTitleWrapper>
         {this.props.dataFromSelectedRoadmap.length === 0
           ? this.handleHasNoContent()
           : this.handleHasContent()}

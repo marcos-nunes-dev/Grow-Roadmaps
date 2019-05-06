@@ -11,7 +11,7 @@ const LoginFormWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: url('../../static/img/bglogin.png')no-repeat center center;
+  background: url('../../static/img/bglogin.svg')no-repeat center center/ 60%;
 `;
 
 const LoginDialog = styled.div`
