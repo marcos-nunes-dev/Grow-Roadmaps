@@ -32,7 +32,6 @@ const start = options => {
     app.use(helmet());
     app.use(cors());
 
-    app.use(express.static('public'));
     // --------------------
     // Parsers
 
@@ -68,7 +67,7 @@ const start = options => {
     app.get('/', (req, res) => {
       res.send('Grow Roadmaps');
       res.end();
-    });  
+    });
 
     // catch 404
     app.use(function(req, res, next) {
