@@ -60,8 +60,6 @@ const start = options => {
     app.use(
       auth({
         expressApp: app,
-        passport: passport,
-        secret: process.env.SESSION_SECRET,
       })
     );
 
