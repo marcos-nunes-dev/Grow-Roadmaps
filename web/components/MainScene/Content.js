@@ -130,7 +130,7 @@ class Content extends Component {
   render() {
     return (
       <ContentWrapper collapsedRoadmap={this.props.roadmapCollapsed}>
-        {this.props.hasContent ? this.handleHasContent() : this.handleHasNoContent()}
+        {!this.props.hasContent ? this.handleHasContent() : this.handleHasNoContent()}
       </ContentWrapper>
     );
   }
