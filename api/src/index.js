@@ -15,7 +15,6 @@ process.on('uncaughtRejection', err => {
 const port = process.env.PORT || '4100';
 
 const service = models.sequelize.sync().then(async () => {
-
   const serverStart = await server.start({ port });
   console.log(
     chalk.green(`• Server started succesfully, running at port ${port} 🚀`)

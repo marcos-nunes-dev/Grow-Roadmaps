@@ -1,0 +1,20 @@
+version: '3.4'
+services:
+  api:
+    build: .
+    environment:
+      - DATABASE_URL=postgres://grow_roadmaps:grow_roadmaps@db:5432/dev_grow_roadmaps
+    ports:
+      - '4100:4100'
+    depends_on:
+      - db
+    volumes:
+      - .:/usr/app
+      - /usr/app/node_modules
+
+  db:
+    image: postgres:11.1-alpine
+    environment:
+      - POSTGRES_USER=grow_roadmaps
+      - POSTGRES_PASSWORD=grow_roadmaps
+      - POSTGRES_DB=dev_grow_roadmaps
