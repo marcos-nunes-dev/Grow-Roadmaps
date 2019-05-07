@@ -1,5 +1,4 @@
 import chalk from 'chalk';
-import models from './models';
 import server from './server';
 
 console.log(chalk.blue('== Grow Roadmaps Starting =='));
@@ -14,13 +13,12 @@ process.on('uncaughtRejection', err => {
 
 const port = process.env.PORT || '4100';
 
-const service = models.sequelize.sync().then(async () => {
-  const serverStart = await server.start({ port });
+const service = server.start({ port }).then(app => {
   console.log(
     chalk.green(`• Server started succesfully, running at port ${port} 🚀`)
   );
 
-  return serverStart;
+  return app;
 });
 
 export default service;

@@ -31,7 +31,11 @@ Para instalar as dependências e em seguida:
 
 Para o setup da API você deve ter o `docker-compose` instalado. Crie um arquivo .env na raiz da pasta API seguindo arquivo `.env-sample`. Entre na pasta e execute:
 
-    docker-compose up
+    make dev
+
+Com o servidor rodando e ainda na pasta dele, migre o banco de dados com:
+
+    make reset-db
 
 E mãos à massa! Você pode ver a documentação do schema GraphQL e executar queries de teste em:
 

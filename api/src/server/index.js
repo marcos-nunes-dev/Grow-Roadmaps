@@ -9,7 +9,6 @@ import { SubscriptionServer } from 'subscriptions-transport-ws';
 import helmet from 'helmet';
 import http from 'http';
 import cors from 'cors';
-import passport from 'passport';
 
 import auth from '../auth';
 import schema from '../graphql';
