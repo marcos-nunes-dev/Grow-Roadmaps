@@ -1,4 +1,5 @@
 import express from 'express';
+import session from 'express-session';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
 import { ApolloServer } from 'apollo-server-express';
@@ -12,10 +13,9 @@ import passport from 'passport';
 
 import auth from '../auth';
 import schema from '../graphql';
-
 import * as utils from './utils';
 
-const dev =
+const IS_DEV =
   (process.env.NODE_ENV || 'development').toLowerCase() === 'development';
 
 const start = options => {
@@ -28,11 +28,10 @@ const start = options => {
     // Server startup
 
     const app = express();
-    if (dev) app.use(morgan('dev'));
+    if (IS_DEV) app.use(morgan('dev'));
     app.use(helmet());
     app.use(cors());
 
-    app.use(express.static('public'));
     // --------------------
     // Parsers
 
@@ -40,13 +39,27 @@ const start = options => {
     app.use(bodyParser.urlencoded({ extended: false }));
 
     //--------------------
+    // Sessions
+
+    app.use(
+      session({
+        cookie: {
+          httpOnly: true,
+          secure: !IS_DEV,
+        },
+        secret: process.env.SESSION_SECRET,
+        resave: false,
+        saveUninitialized: false,
+        // store, // TODO: add custom session store
+      })
+    );
+
+    //--------------------
     // Auth
 
     app.use(
       auth({
         expressApp: app,
-        passport: passport,
-        secret: process.env.SESSION_SECRET,
       })
     );
 
@@ -68,7 +81,7 @@ const start = options => {
     app.get('/', (req, res) => {
       res.send('Grow Roadmaps');
       res.end();
-    });  
+    });
 
     // catch 404
     app.use(function(req, res, next) {
@@ -81,7 +94,7 @@ const start = options => {
     app.use(function(err, req, res, next) {
       // set locals, only providing error in development
       res.locals.message = err.message;
-      res.locals.error = dev ? err : {};
+      res.locals.error = IS_DEV ? err : {};
       res.status(err.status || 500).send();
     });
 

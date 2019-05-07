@@ -28,6 +28,9 @@ export default (sequelize, DataTypes) => {
     },
     fcmToken: DataTypes.STRING,
 
+    githubUsername: DataTypes.STRING,
+    githubProviderId: DataTypes.STRING,
+
     // ----------------------------------------
     // * Access level
     // 0: user
@@ -70,7 +73,7 @@ export default (sequelize, DataTypes) => {
     return this.accessLevel === 1;
   };
 
-  User.associate = models => {    
+  User.associate = models => {
     models.User.belongsTo(models.Admin, {
       as: 'AsAdmin',
       foreignKey: { name: 'asAdminId' },

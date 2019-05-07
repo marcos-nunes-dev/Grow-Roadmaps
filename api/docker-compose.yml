@@ -2,8 +2,6 @@ version: '3.4'
 services:
   api:
     build: .
-    environment:
-      - DATABASE_URL=postgres://grow_roadmaps:grow_roadmaps@db:5432/dev_grow_roadmaps
     ports:
       - '4100:4100'
     depends_on:
@@ -11,6 +9,10 @@ services:
     volumes:
       - .:/usr/app
       - /usr/app/node_modules
+    environment:
+      - DATABASE_URL=postgres://grow_roadmaps:grow_roadmaps@db:5432/dev_grow_roadmaps
+      - GITHUB_OAUTH_CLIENT_ID=1318f1ff1705f46fc94a
+      - GITHUB_OAUTH_CLIENT_SECRET=413497e7aaafbaff8b8a8812f3573b2fc1a8b329
 
   db:
     image: postgres:11.1-alpine
