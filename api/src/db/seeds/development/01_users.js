@@ -6,7 +6,7 @@ exports.seed = function(knex) {
       // Inserts seed entries
       return knex('users').insert([
         {
-          id: '54378ee4-51a9-4208-b3c5-dcca2f3a01e2',
+          id: '6cc32fb4-bde4-4e0f-a2b7-6980a2c48ef1',
           name: 'Grow',
           username: 'grow',
           email: 'grow@gmail.com',
@@ -14,7 +14,7 @@ exports.seed = function(knex) {
           accessLevel: 0,
         },
         {
-          id: '54378ee4-51a9-4208-b3c5-dcca29dr3kk5',
+          id: 'f038358f-ce84-47d7-aa9f-837514207e6d',
           name: 'Marcos Nunes',
           username: 'marcos',
           email: 'corecodde@hotmail.com',

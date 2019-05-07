@@ -1,5 +1,5 @@
 import { Strategy } from 'passport-github';
-import models from '../../models';
+import { findOrCreateUser } from '../../db/actions/user';
 
 const CLIENT_ID = process.env.GITHUB_OAUTH_CLIENT_ID;
 const CLIENT_SECRET = process.env.GITHUB_OAUTH_CLIENT_SECRET;
@@ -32,40 +32,20 @@ export default () => {
       const email =
         profile.emails && profile.emails[0] && profile.emails[0].value;
 
-      const pictureUrl =
+      const profilePicture =
         (profile._json.avatar_url && profile._json.avatar_url) || null;
 
       const user = {
         githubProviderId: profile.id,
         githubUsername,
-        email,
         name,
-        pictureUrl,
+        username: githubUsername,
+        email,
+        profilePicture,
       };
 
-      const dbUser = await createOrFindUser(user, 'githubProviderId');
+      const dbUser = await findOrCreateUser(user, 'githubProviderId');
       return done(null, dbUser);
     }
   );
-};
-
-// TODO: move to another place
-const createOrFindUser = async (user, provider) => {
-  // If the user has an ID then it already exists
-  let promise;
-  if (user.id) {
-    promise = models.User.findOne({ where: { id } });
-  } else if (user[provider]) {
-    promise = models.User.findOne({ where: { [provider]: user[provider] } });
-  } else {
-    promise = Promise.resolve(null);
-  }
-
-  const existentUser = await promise;
-  if (existentUser) {
-    return existentUser;
-  }
-
-  // No user found, create it
-  return await models.User.create(user);
 };
