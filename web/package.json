@@ -31,7 +31,11 @@
     "redux-devtools-extension": "^2.13.8",
     "redux-react-hook": "^3.3.1",
     "redux-thunk": "^2.3.0",
-    "styled-components": "^4.2.0"
+    "styled-components": "^4.2.0",
+    "axios": "^0.18.0",
+    "dotenv": "latest",
+    "react-apollo-hooks": "^0.4.5",
+    "js-cookie": "latest"
   },
   "devDependencies": {
     "@storybook/addon-actions": "latest",
