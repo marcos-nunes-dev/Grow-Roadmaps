@@ -47,9 +47,7 @@
     "pg": "^7.5.0",
     "pg-hstore": "^2.3.2",
     "request": "^2.88.0",
-    "sequelize": "^4.38.0",
     "subscriptions-transport-ws": "^0.9.15",
-    "umzug": "^2.1.0",
     "uuid": "^3.3.2",
     "xml": "^1.0.1"
   },
