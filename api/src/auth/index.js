@@ -1,7 +1,6 @@
 import express from 'express';
 import passport from 'passport';
-import LocalStrategy from './passport/LocalStrategy';
-import models from '../models';
+import GitHubStrategy from './strategies/github';
 
 export default ({
   // Express Server
@@ -16,22 +15,35 @@ export default ({
   expressApp.use(passport.session());
 
   // Use default strategies
-  passport.use('local-login', LocalStrategy());
+  passport.use('github', GitHubStrategy());
 
   // Serialize user
   passport.serializeUser((user, done) => {
-    done(null, { id: user.id });
+    done(null, JSON.stringify(user));
   });
 
   // Deserialize user
   passport.deserializeUser((data, done) => {
-    models.User.findOne({ where: { id: data.id } })
-      .then(user => done(null, user))
-      .catch(err => done(err, null));
+    try {
+      const user = JSON.parse(data);
+      done(null, user);
+    } catch (err) {
+      done(err);
+    }
   });
 
   // Create routes
   const router = express.Router();
+
+  // GitHub Routes
+  router.get('/auth/github', passport.authenticate('github', { state: true }));
+  router.get(
+    '/auth/github/callback',
+    passport.authenticate('github', { failureRedirect: '/' }),
+    (req, res) => {
+      res.redirect('/');
+    }
+  );
 
   /*
    * Let passport handle the errors for us. If the auth is unsuccessful
