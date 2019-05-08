@@ -35,7 +35,11 @@ Para o setup da API você deve ter o `docker-compose` instalado. Crie um arquivo
 
 Com o servidor rodando e ainda na pasta dele, migre o banco de dados com:
 
-    make reset-db
+    make reset-db (Linux) ou make reset-db-win (Windows)
+
+
+Caso enfrente problemas com o comando `make` no windows você pode acessar o arquivo api/Makefile e seguir os comandos.
+
 
 E mãos à massa! Você pode ver a documentação do schema GraphQL e executar queries de teste em:
 
