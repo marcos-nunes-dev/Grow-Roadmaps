@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import GithubIcon from '../../static/icons/github-sign.svg';
 import FacebookIcon from '../../static/icons/facebook-login.svg';
 import GoogleIcon from '../../static/icons/google-login.svg';
+import Router from 'next/router';
 
 const LoginFormWrapper = styled.div`
   width: 61vw;
@@ -127,7 +128,9 @@ export default function LoginForm() {
         </Title>
         <FormWrapper>
           <GithubType>
+            <div onClick={() => Router.push('http://localhost:4100/auth/github')} >
             <GithubIcon /> Login com Github
+            </div>
           </GithubType>
           <FacebookType>
             <FacebookIcon /> Login com Facebook
