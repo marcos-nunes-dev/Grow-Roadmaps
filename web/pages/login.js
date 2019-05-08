@@ -18,7 +18,6 @@ export default function index() {
 
   return (
     <Wrapper>
-      {JSON.stringify(error)}
       <SliderAbout />
       <LoginForm />
     </Wrapper>
