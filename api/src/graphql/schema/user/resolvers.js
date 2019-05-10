@@ -1,17 +1,14 @@
-import {
-  baseResolver,
-  isAuthenticatedResolver,
-  isAdminResolver,
-} from '../../baseResolvers';
-import {
-  InvalidDataError,
-  UserAlreadyExists,
-  UserNotFound,
-  UnknownError,
-} from '../../errors';
+import { baseResolver, isAuthenticatedResolver } from '../../baseResolvers';
+import { findUserById } from '../../../db/actions/user';
 
-const me = isAuthenticatedResolver.createResolver(async (root, _, { user }) => {
-  return user;
+const me = baseResolver.createResolver(async (root, _, { user }) => {
+  if (!user) {
+    return null;
+  }
+
+  // Fetches the updated status of the user from DB instead of just returning
+  // the object from session
+  return await findUserById(user.id);
 });
 
 const userById = isAuthenticatedResolver.createResolver(
