@@ -34,7 +34,8 @@ export async function findOrCreateUser(user, provider) {
   }
 
   // No user found, create it
-  return await createUser({ ...user });
+  const newUserId = await createUser({ ...user });
+  return await findUserById(newUserId);
 }
 
 // ------------------------------
@@ -42,7 +43,10 @@ export async function findOrCreateUser(user, provider) {
 
 export async function createUser(userData) {
   try {
-    return await knex('users').insert(userData);
+    const [id] = await knex('users')
+      .insert(userData)
+      .returning('id');
+    return id;
   } catch (err) {
     if (err.code === POSTGRES_UNIQUE_VIOLATION) {
       if (err.constraint.includes('username'))
