@@ -1,5 +1,6 @@
 import express from 'express';
 import session from 'express-session';
+import connectSessionKnex from 'connect-session-knex';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
 import { ApolloServer } from 'apollo-server-express';
@@ -8,6 +9,7 @@ import helmet from 'helmet';
 import http from 'http';
 import cors from 'cors';
 
+import knex from '../db/knex';
 import auth from '../auth';
 import schema from '../graphql';
 import * as utils from './utils';
@@ -38,6 +40,8 @@ const start = options => {
     //--------------------
     // Sessions
 
+    const KnexSessionStore = connectSessionKnex(session);
+    const store = new KnexSessionStore({ knex });
     app.use(
       session({
         cookie: {
@@ -47,18 +51,14 @@ const start = options => {
         secret: process.env.SESSION_SECRET,
         resave: false,
         saveUninitialized: false,
-        // store, // TODO: add custom session store
+        store,
       })
     );
 
     //--------------------
     // Auth
 
-    app.use(
-      auth({
-        expressApp: app,
-      })
-    );
+    app.use(auth({ expressApp: app }));
 
     //--------------------
     // GraphQL
