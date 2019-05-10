@@ -22,11 +22,9 @@
     ]
   },
   "dependencies": {
-    "@types/node": "^10.12.20",
     "apollo-errors": "^1.9.0",
     "apollo-resolvers": "^1.4.1",
     "apollo-server-express": "^2.0.6",
-    "bcrypt-nodejs": "^0.0.3",
     "body-parser": "^1.18.2",
     "chalk": "^2.4.0",
     "cors": "^2.8.4",
@@ -40,16 +38,9 @@
     "knex-migrate": "^1.7.2",
     "merge-graphql-schemas": "^1.5.3",
     "morgan": "^1.9.0",
-    "node": "^11.4.0",
     "passport": "^0.4.0",
     "passport-github": "^1.1.0",
-    "passport-local": "^1.0.0",
-    "pg": "^7.5.0",
-    "pg-hstore": "^2.3.2",
-    "request": "^2.88.0",
-    "subscriptions-transport-ws": "^0.9.15",
-    "uuid": "^3.3.2",
-    "xml": "^1.0.1"
+    "pg": "^7.5.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

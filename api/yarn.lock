@@ -138,7 +138,7 @@
   version "11.13.8"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-11.13.8.tgz#e5d71173c95533be9842b2c798978f095f912aab"
 
-"@types/node@^10.1.0", "@types/node@^10.12.20":
+"@types/node@^10.1.0":
   version "10.14.6"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.14.6.tgz#9cbfcb62c50947217f4d88d4d274cc40c22625a9"
 
@@ -1101,10 +1101,6 @@ basic-auth@~2.0.0:
   resolved "https://registry.yarnpkg.com/basic-auth/-/basic-auth-2.0.1.tgz#b998279bf47ce38344b4f3cf916d4679bbf51e3a"
   dependencies:
     safe-buffer "5.1.2"
-
-bcrypt-nodejs@^0.0.3:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/bcrypt-nodejs/-/bcrypt-nodejs-0.0.3.tgz#c60917f26dc235661566c681061c303c2b28842b"
 
 bcrypt-pbkdf@^1.0.0:
   version "1.0.2"
@@ -3819,10 +3815,6 @@ nocache@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/nocache/-/nocache-2.0.0.tgz#202b48021a0c4cbde2df80de15a17443c8b43980"
 
-node-bin-setup@^1.0.0:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/node-bin-setup/-/node-bin-setup-1.0.6.tgz#4b5c9bb937ece702d7069b36ca78af4684677528"
-
 node-fetch@^2.1.2, node-fetch@^2.2.0:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.4.0.tgz#125ae2b0c2a75cb3b2ed141bf73e106cfe1f0ca8"
@@ -3855,12 +3847,6 @@ node-pre-gyp@^0.12.0:
     rimraf "^2.6.1"
     semver "^5.3.0"
     tar "^4"
-
-node@^11.4.0:
-  version "11.14.0"
-  resolved "https://registry.yarnpkg.com/node/-/node-11.14.0.tgz#6c210c2adefcba32d1b1bb3169194cfb052927c6"
-  dependencies:
-    node-bin-setup "^1.0.0"
 
 nodemon@^1.12.1:
   version "1.18.11"
@@ -4168,12 +4154,6 @@ passport-github@^1.1.0:
   dependencies:
     passport-oauth2 "1.x.x"
 
-passport-local@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/passport-local/-/passport-local-1.0.0.tgz#1fe63268c92e75606626437e3b906662c15ba6ee"
-  dependencies:
-    passport-strategy "1.x.x"
-
 passport-oauth2@1.x.x:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/passport-oauth2/-/passport-oauth2-1.5.0.tgz#64babbb54ac46a4dcab35e7f266ed5294e3c4108"
@@ -4266,12 +4246,6 @@ pg-connection-string@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/pg-connection-string/-/pg-connection-string-2.0.0.tgz#3eefe5997e06d94821e4d502e42b6a1c73f8df82"
   integrity sha1-Pu/lmX4G2Ugh5NUC5CtqHHP434I=
-
-pg-hstore@^2.3.2:
-  version "2.3.2"
-  resolved "https://registry.yarnpkg.com/pg-hstore/-/pg-hstore-2.3.2.tgz#f7ef053e7b9b892ae986af2f7cbe86432dfcf24f"
-  dependencies:
-    underscore "^1.7.0"
 
 pg-int8@1.0.1:
   version "1.0.1"
@@ -4667,7 +4641,7 @@ request-promise-native@^1.0.5:
     stealthy-require "^1.1.1"
     tough-cookie "^2.3.3"
 
-request@^2.87.0, request@^2.88.0:
+request@^2.87.0:
   version "2.88.0"
   resolved "https://registry.yarnpkg.com/request/-/request-2.88.0.tgz#9c2fca4f7d35b592efe57c7f0a55e81052124fef"
   dependencies:
@@ -5127,7 +5101,7 @@ strip-json-comments@~2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
 
-subscriptions-transport-ws@^0.9.11, subscriptions-transport-ws@^0.9.15:
+subscriptions-transport-ws@^0.9.11:
   version "0.9.16"
   resolved "https://registry.yarnpkg.com/subscriptions-transport-ws/-/subscriptions-transport-ws-0.9.16.tgz#90a422f0771d9c32069294c08608af2d47f596ec"
   dependencies:
@@ -5400,10 +5374,6 @@ undefsafe@^2.0.2:
   dependencies:
     debug "^2.2.0"
 
-underscore@^1.7.0:
-  version "1.9.1"
-  resolved "https://registry.yarnpkg.com/underscore/-/underscore-1.9.1.tgz#06dce34a0e68a7babc29b365b8e74b8925203961"
-
 union-value@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/union-value/-/union-value-1.0.0.tgz#5c71c34cb5bad5dcebe3ea0cd08207ba5aa1aea4"
@@ -5661,10 +5631,6 @@ xdg-basedir@^3.0.0:
 xml-name-validator@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/xml-name-validator/-/xml-name-validator-3.0.0.tgz#6ae73e06de4d8c6e47f9fb181f78d648ad457c6a"
-
-xml@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/xml/-/xml-1.0.1.tgz#78ba72020029c5bc87b8a81a3cfcd74b4a2fc1e5"
 
 xtend@^4.0.0:
   version "4.0.1"

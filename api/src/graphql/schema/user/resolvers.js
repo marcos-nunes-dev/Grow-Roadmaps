@@ -32,42 +32,6 @@ const userByEmail = isAuthenticatedResolver.createResolver(
   }
 );
 
-// Mutation type
-const registerUser = baseResolver.createResolver(async (root, { input }) => {
-  // const { email, deviceToken, password } = input;
-  // if (!email || !deviceToken || !password) return new InvalidDataError();
-  // const existentUser = await models.User.findOne({
-  //   where: { email: email },
-  // });
-  // if (existentUser) return new UserAlreadyExists();
-  // return models.sequelize
-  //   .transaction(async transaction => {
-  //     const userModel = await models.User.build({ email: email });
-  //     userModel.password = await userModel.generateHash(password);
-  //     const user = await userModel.save({ transaction });
-  //     await models.DeviceToken.create(
-  //       {
-  //         token: deviceToken,
-  //         userId: user.id,
-  //       },
-  //       { transaction }
-  //     );
-  //     return user;
-  //   })
-  //   .catch(err => {
-  //     return new UnknownError();
-  //   });
-});
-
-const updateUserFCMToken = isAuthenticatedResolver.createResolver(
-  async (root, { input }, { user }) => {
-    // const { token } = input;
-    // if (!token) return new InvalidDataError();
-    // let updatedUser = await user.update({ fcmToken: token });
-    // return !!updatedUser;
-  }
-);
-
 export default {
   User: {
     asAdmin: getUserAsAdmin,
@@ -76,9 +40,5 @@ export default {
     me,
     userById,
     userByEmail,
-  },
-  Mutation: {
-    registerUser,
-    updateUserFCMToken,
   },
 };

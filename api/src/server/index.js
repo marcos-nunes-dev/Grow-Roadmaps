@@ -3,9 +3,7 @@ import session from 'express-session';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
 import { ApolloServer } from 'apollo-server-express';
-import { execute, subscribe } from 'graphql';
 import { formatError } from 'apollo-errors';
-import { SubscriptionServer } from 'subscriptions-transport-ws';
 import helmet from 'helmet';
 import http from 'http';
 import cors from 'cors';
@@ -102,18 +100,7 @@ const start = options => {
 
     const server = http.createServer(app);
     const normalizedPort = utils.normalizePort(options.port);
-    server.listen(normalizedPort, () => {
-      new SubscriptionServer(
-        {
-          execute,
-          subscribe,
-          schema,
-        },
-        {
-          server,
-        }
-      );
-    });
+    server.listen(normalizedPort);
     server.on('error', utils.onError);
     server.on('listening', () => {
       resolve(server);
