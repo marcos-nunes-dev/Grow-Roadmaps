@@ -10,12 +10,6 @@ import {
   UnknownError,
 } from '../../errors';
 
-const getUserAsAdmin = isAuthenticatedResolver.createResolver(
-  async (root, _, { user }) => {
-    // return await user.getAsAdmin();
-  }
-);
-
 const me = isAuthenticatedResolver.createResolver(async (root, _, { user }) => {
   return user;
 });
@@ -33,9 +27,6 @@ const userByEmail = isAuthenticatedResolver.createResolver(
 );
 
 export default {
-  User: {
-    asAdmin: getUserAsAdmin,
-  },
   Query: {
     me,
     userById,

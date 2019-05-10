@@ -4,7 +4,6 @@ type User {
   pictureUrl: String
   email: String
   points: String
-  asAdmin: Admin
 }
 
 type Query {
