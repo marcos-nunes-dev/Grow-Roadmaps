@@ -10,16 +10,16 @@
     "migrate": "knex-migrate",
     "reset-db": "knex-migrate down --to 0 && knex-migrate up && knex seed:run",
     "clean": "rm -rf dist && mkdir dist",
-    "build": "yarn clean && babel src --out-dir dist --copy-files"
+    "build": "yarn clean && babel src --out-dir dist --copy-files",
+    "test": "jest --runInBand --forceExit"
   },
   "jest": {
     "testMatch": [
       "**/__tests__/**/*.test.js?(x)",
       "**/?(*.)(spec|test).js?(x)"
     ],
-    "setupFiles": [
-      "./__tests__/testHelper.js"
-    ]
+    "globalSetup": "./__tests__/setup.js",
+    "globalTeardown": "./__tests__/teardown.js"
   },
   "dependencies": {
     "apollo-errors": "^1.9.0",
@@ -36,6 +36,7 @@
     "graphql-tools": "^3.1.1",
     "helmet": "^3.12.0",
     "knex": "^0.16.5",
+    "knex-cleaner": "^1.1.4",
     "knex-migrate": "^1.7.2",
     "merge-graphql-schemas": "^1.5.3",
     "morgan": "^1.9.0",
@@ -51,7 +52,6 @@
     "babel-jest": "^24.8.0",
     "eslint": "^4.19.1",
     "jest": "^24.8.0",
-    "jest-cli": "^22.4.3",
     "nodemon": "^1.12.1",
     "supertest": "^3.0.0"
   }
