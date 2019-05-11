@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should retrieve the current logged in user 1`] = `
+Object {
+  "data": Object {
+    "me": Object {
+      "email": "one@user.com",
+      "id": "45ecf361-3786-494a-b299-64f42bf2ee20",
+      "name": "User One",
+    },
+  },
+}
+`;
