@@ -8,13 +8,13 @@ dev:
 	docker-compose up
 
 test:
-	docker-compose -p tests run --rm api yarn test
+	docker-compose -p grow_tests run --rm api yarn test
 
 test-watch:
-	docker-compose -p tests run --rm api yarn test --watchAll
+	docker-compose -p grow_tests run --rm api yarn test --watchAll
 
 reset-containers:
 	docker-compose down
-	docker-compose -p tests down
 	docker-compose build
-	docker-compose -p tests build
+	docker-compose -p grow_tests down
+	docker-compose -p grow_tests build
