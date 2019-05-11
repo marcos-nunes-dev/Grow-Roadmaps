@@ -90,15 +90,4 @@ export default async () => {
   });
 
   return app;
-
-  //--------------------
-  // Awake!
-
-  const server = http.createServer(app);
-  const normalizedPort = utils.normalizePort(options.port);
-  server.listen(normalizedPort);
-  server.on('error', utils.onError);
-  server.on('listening', () => {
-    resolve(server);
-  });
 };
