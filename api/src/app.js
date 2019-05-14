@@ -6,7 +6,6 @@ import bodyParser from 'body-parser';
 import { ApolloServer } from 'apollo-server-express';
 import { formatError } from 'apollo-errors';
 import helmet from 'helmet';
-import http from 'http';
 import cors from 'cors';
 
 import knex from './db/knex';
