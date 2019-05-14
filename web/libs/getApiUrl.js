@@ -1,15 +1,15 @@
-const IS_DEV = process.env.NODE_ENV !== 'production';
+export default ({ req, clientOnly }) => {
+  const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
+  const isBrowser = !!process.browser;
 
-export default () => {
-  // When developing with Docker, we need to switch from
-  // localhost to "http://api" between client and server,
-  // because the client don't know how to resolve "http://api".
-  // In this case we just return the localhost value
+  // We return early in two cases:
+  // 1. The request is in the server but the req object is undefined
+  // 2. The request is in the server but the URL is only for the client
+  if ((!clientOnly && !isBrowser && !req) || (clientOnly && !isBrowser)) {
+    return '';
+  }
 
-  const clientUrl =
-    process.browser && IS_DEV
-      ? 'http://localhost:3000'
-      : process.env.CLIENT_URL;
-
-  return clientUrl + '/api';
+  return clientOnly || isBrowser
+    ? `${protocol}://${window.location.host}/api`
+    : `${protocol}://${req.headers.host}/api`;
 };

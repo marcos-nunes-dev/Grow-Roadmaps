@@ -1,9 +1,11 @@
 import React from 'react';
+import Router from 'next/router';
 import styled from 'styled-components';
+
+import getApiUrl from '../../libs/getApiUrl';
 import GithubIcon from '../../static/icons/github-sign.svg';
 import FacebookIcon from '../../static/icons/facebook-login.svg';
 import GoogleIcon from '../../static/icons/google-login.svg';
-import Router from 'next/router';
 
 const LoginFormWrapper = styled.div`
   width: 61vw;
@@ -12,7 +14,7 @@ const LoginFormWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: url('../../static/img/bglogin.svg')no-repeat center center/ 60%;
+  background: url('../../static/img/bglogin.svg') no-repeat center center/ 60%;
 `;
 
 const LoginDialog = styled.div`
@@ -97,7 +99,7 @@ const GoogleType = styled.div`
     fill: #fff;
     margin-right: 10px;
   }
-  opacity: .5;
+  opacity: 0.5;
   background: #f12909;
   padding: 15px;
   color: #fff;
@@ -116,6 +118,8 @@ const HelperInfo = styled.div`
 `;
 
 export default function LoginForm() {
+  const apiAuthUrl = getApiUrl({ clientOnly: true }) + '/auth';
+
   return (
     <LoginFormWrapper>
       <LoginDialog>
@@ -126,20 +130,28 @@ export default function LoginForm() {
             roadmaps para estudo nas mais diversas linguagens de programação.
           </p>
         </Title>
+
         <FormWrapper>
           <GithubType>
-            <div onClick={() => Router.push('http://localhost:4100/auth/github')} >
-            <GithubIcon /> Login com Github
+            <div onClick={() => Router.push(apiAuthUrl + '/github')}>
+              <GithubIcon /> Login com Github
             </div>
           </GithubType>
+
           <FacebookType>
             <FacebookIcon /> Login com Facebook
           </FacebookType>
+
           <GoogleType>
             <GoogleIcon /> Login com Google
           </GoogleType>
         </FormWrapper>
-        <HelperInfo>Esqueceu sua senha? Todos os tipos de acesso em nossa plataforma são terceirizados. Utilize a respectiva plataforma para recuperar/alterar sua senha.</HelperInfo>
+
+        <HelperInfo>
+          Esqueceu sua senha? Todos os tipos de acesso em nossa plataforma são
+          terceirizados. Utilize a respectiva plataforma para recuperar/alterar
+          sua senha.
+        </HelperInfo>
       </LoginDialog>
     </LoginFormWrapper>
   );

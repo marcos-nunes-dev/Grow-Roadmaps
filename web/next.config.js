@@ -7,7 +7,7 @@ const Dotenv = require('dotenv-webpack');
 
 // fix: prevents error when .css files are required by node
 if (typeof require !== 'undefined') {
-  require.extensions['.css'] = file => {}
+  require.extensions['.css'] = file => {};
 }
 
 module.exports = {
@@ -37,6 +37,7 @@ module.exports = {
         ...config.plugins,
 
         // Read the .env file
+        // Do we really need Dotenv?
         new Dotenv({
           path: path.join(__dirname, '.env'),
           systemvars: true,
@@ -46,7 +47,4 @@ module.exports = {
       return config;
     },
   }),
-  env: {
-    API_URL: process.env.API_URL,
-  },
 };

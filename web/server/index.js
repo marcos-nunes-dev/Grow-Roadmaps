@@ -7,6 +7,10 @@ const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
+if (!process.env.API_URL) {
+  throw new Error('The API_URL cannot be empty. Add it to your .env file.');
+}
+
 app.prepare().then(() => {
   const server = express();
 

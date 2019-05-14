@@ -1,18 +1,18 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import { useQuery } from 'react-apollo-hooks';
 import Wrapper from '../components/Common/DefaultWrapper';
 import SliderAbout from '../components/LoginScene/SliderAbout';
 import LoginForm from '../components/LoginScene/LoginForm';
-import { useQuery } from 'react-apollo-hooks';
 import { meQuerie } from '../GraphQL/queries';
 
-export default function index() {
-  const {loading, error, data} = useQuery(meQuerie);
+const LoginPage = () => {
+  const { loading, error, data } = useQuery(meQuerie);
 
-  if(loading){
+  if (loading) {
     return <div>Loading...</div>;
   }
 
-  if(Object.entries(data).length !== 0){
+  if (data.me) {
     return <div>Já é usuário {JSON.stringify(data)}</div>;
   }
 
@@ -22,4 +22,6 @@ export default function index() {
       <LoginForm />
     </Wrapper>
   );
-}
+};
+
+export default LoginPage;

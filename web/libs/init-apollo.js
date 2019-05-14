@@ -16,10 +16,9 @@ if (!process.browser) {
   global.fetch = fetch;
 }
 
-const getClientUri = () => {
-  // When developing with Docker, we need to switch from
-  // localhost to "http://api" between server and client
-  return getApiUrl() + '/graphql';
+const getGraphQLEndpoint = req => {
+  const url = getApiUrl({ req });
+  return url ? url + '/graphql' : '';
 };
 
 const errorLink = onError(({ graphQLErrors, forward, operation }) => {
@@ -47,13 +46,15 @@ const errorLink = onError(({ graphQLErrors, forward, operation }) => {
   });
 });
 
-function create(initialState, { headers }) {
+function create(initialState, { req, headers }) {
+  const uri = getGraphQLEndpoint(req);
+
   return new ApolloClient({
     connectToDevTools: process.browser,
     ssrMode: !process.browser, // Disables forceFetch on the server (so queries are only run once)
     link: errorLink.concat(
       new HttpLink({
-        uri: getClientUri(),
+        uri,
         // Include the credentials on the requests so the user
         // can fetch queries that require authentication
         credentials: 'include',

@@ -18,7 +18,7 @@ export default App => {
       // Init apollo forwarding the headers from the client, this allows
       // Apollo to send the cookies from the headers to the API server,
       // making authenticated calls possible in the server phase of SSR
-      const apollo = initApollo(null, reqHeaders && { headers: reqHeaders });
+      const apollo = initApollo(null, { req, headers: reqHeaders });
 
       // Inject Apollo Client into context for the execution of queries inside
       // getInitialProps
