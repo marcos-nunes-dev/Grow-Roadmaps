@@ -26,7 +26,7 @@
     "isomorphic-unfetch": "^3.0.0",
     "js-cookie": "latest",
     "lodash": "^4.17.11",
-    "next": "^8.0.4",
+    "next": "^9.3.3",
     "http-proxy-middleware": "^0.19.1",
     "react": "^16.8.6",
     "react-apollo": "^2.5.4",
