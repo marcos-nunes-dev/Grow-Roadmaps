@@ -1,21 +1,21 @@
-[2019-04-15 17:34:17] layer "+": Expected Either a default asset specification or a layer asset specification but "+" found.
-[2019-04-15 17:34:17] layer "+44": Expected Either a default asset specification or a layer asset specification but "+" found.
-[2019-04-15 17:34:17] layer "+44": Expected Either a default asset specification or a layer asset specification but "+" found.
-[2019-04-15 17:34:17] layer "+44": Expected Either a default asset specification or a layer asset specification but "+" found.
-[2019-04-15 17:34:17] layer "+44": Expected Either a default asset specification or a layer asset specification but "+" found.
-[2019-04-15 17:34:17] layer "+44": Expected Either a default asset specification or a layer asset specification but "+" found.
-[2019-04-15 17:34:17] layer "+44": Expected Either a default asset specification or a layer asset specification but "+" found.
-[2019-04-15 17:34:17] layer "+44": Expected Either a default asset specification or a layer asset specification but "+" found.
-[2019-04-15 17:34:18] layer "+44": Expected Either a default asset specification or a layer asset specification but "+" found.
-[2019-04-15 17:34:18] layer "+44": Expected Either a default asset specification or a layer asset specification but "+" found.
-[2019-04-15 17:34:17] layer "Javascript Angular.js Python Vue.js C# (C Sharp) Javascript Ang": Expected end of input but "C" found.
-[2019-04-15 17:34:18] layer "+44": Expected Either a default asset specification or a layer asset specification but "+" found.
-[2019-04-15 17:34:18] layer "+44": Expected Either a default asset specification or a layer asset specification but "+" found.
-[2019-04-15 17:34:18] layer "+44": Expected Either a default asset specification or a layer asset specification but "+" found.
-[2019-04-15 17:34:17] layer "+ Upvote": Expected Either a default asset specification or a layer asset specification but "+" found.
-[2019-04-15 17:34:17] layer "+44": Expected Either a default asset specification or a layer asset specification but "+" found.
-[2019-04-15 17:34:17] layer "+44": Expected Either a default asset specification or a layer asset specification but "+" found.
-[2019-04-15 17:34:17] layer "+44": Expected Either a default asset specification or a layer asset specification but "+" found.
-[2019-04-15 17:34:17] layer "+44": Expected Either a default asset specification or a layer asset specification but "+" found.
-[2019-04-15 17:34:17] layer "+44": Expected Either a default asset specification or a layer asset specification but "+" found.
-[2019-04-15 17:34:17] layer "+44": Expected Either a default asset specification or a layer asset specification but "+" found.
+[2021-5-6 11:37:35] layer "+": Expected Either a default asset specification or a layer asset specification but "+" found.
+[2021-5-6 11:37:35] layer "+44": Expected Either a default asset specification or a layer asset specification but "+" found.
+[2021-5-6 11:37:35] layer "+44": Expected Either a default asset specification or a layer asset specification but "+" found.
+[2021-5-6 11:37:35] layer "+44": Expected Either a default asset specification or a layer asset specification but "+" found.
+[2021-5-6 11:37:35] layer "+44": Expected Either a default asset specification or a layer asset specification but "+" found.
+[2021-5-6 11:37:35] layer "+44": Expected Either a default asset specification or a layer asset specification but "+" found.
+[2021-5-6 11:37:35] layer "+44": Expected Either a default asset specification or a layer asset specification but "+" found.
+[2021-5-6 11:37:35] layer "+44": Expected Either a default asset specification or a layer asset specification but "+" found.
+[2021-5-6 11:37:35] layer "+44": Expected Either a default asset specification or a layer asset specification but "+" found.
+[2021-5-6 11:37:35] layer "+44": Expected Either a default asset specification or a layer asset specification but "+" found.
+[2021-5-6 11:37:35] layer "Javascript Angular.js Python Vue.js C# (C Sharp) Javascript Ang": Expected end of input but "C" found.
+[2021-5-6 11:37:35] layer "+44": Expected Either a default asset specification or a layer asset specification but "+" found.
+[2021-5-6 11:37:35] layer "+44": Expected Either a default asset specification or a layer asset specification but "+" found.
+[2021-5-6 11:37:35] layer "+44": Expected Either a default asset specification or a layer asset specification but "+" found.
+[2021-5-6 11:37:35] layer "+ Upvote": Expected Either a default asset specification or a layer asset specification but "+" found.
+[2021-5-6 11:37:35] layer "+44": Expected Either a default asset specification or a layer asset specification but "+" found.
+[2021-5-6 11:37:35] layer "+44": Expected Either a default asset specification or a layer asset specification but "+" found.
+[2021-5-6 11:37:35] layer "+44": Expected Either a default asset specification or a layer asset specification but "+" found.
+[2021-5-6 11:37:35] layer "+44": Expected Either a default asset specification or a layer asset specification but "+" found.
+[2021-5-6 11:37:35] layer "+44": Expected Either a default asset specification or a layer asset specification but "+" found.
+[2021-5-6 11:37:35] layer "+44": Expected Either a default asset specification or a layer asset specification but "+" found.

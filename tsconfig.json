@@ -1,0 +1,28 @@
+{
+    "compilerOptions": {
+        "outDir": "./dist/",
+        "module": "esnext",
+        "target": "es5",
+        "baseUrl": "./src",
+        "lib": ["es6", "dom", "dom.iterable", "esnext"],
+        "sourceMap": true,
+        "allowJs": true,
+        "jsx": "preserve",
+        "moduleResolution": "node",
+        "rootDir": ".",
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
+        "noImplicitAny": true,
+        "strictNullChecks": true,
+        "skipLibCheck": true,
+        "strict": false,
+        "forceConsistentCasingInFileNames": true,
+        "noEmit": true,
+        "esModuleInterop": true,
+        "resolveJsonModule": true,
+        "isolatedModules": true
+    },
+    "exclude": ["node_modules", "dist", "coverage", "config"],
+    "types": ["typePatches"],
+    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/pages/index.js"]
+}
