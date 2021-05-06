@@ -1,4 +1,7 @@
-![GrowLogo](https://i.imgur.com/Nmwfd0J.jpg)
+<center>
+    <img src="https://i.imgur.com/6FubYCR.png" width="300px" />
+    <h1><b>Grow Roadmaps</b></h1>
+</center>
 
 # Oque é o @Grow?
 
@@ -8,8 +11,8 @@
 
 ## Quer Contribuir com o projeto? :open_hands:
 
-Para contribuir com o projeto com ideias, Backend, frontend ou design acesse o link [Contribution.md](https://github.com/MarcosRenato266/Grow-Roadmaps/blob/master/docs/Contribution.md)
-Se você só está curioso ou quer um "norte" de como pode contribuir veja o arquivo [Functionalities.md](https://github.com/MarcosRenato266/Grow-Roadmaps/blob/master/docs/Functionalities.md)
+Para contribuir com o projeto com ideias, Backend, frontend ou design acesse o link [Contribution.md](https://github.com/marcos-nunes-dev/Grow-Roadmaps/blob/master/docs/Contribution.md)
+Se você só está curioso ou quer um "norte" de como pode contribuir veja o arquivo [Functionalities.md](https://github.com/marcos-nunes-dev/Grow-Roadmaps/blob/master/docs/Functionalities.md)
 para conhecer a descrição de todas funcionalidades do app.
 
 ## Porque usar @Grow Roadmaps? :speech_balloon:
@@ -29,30 +32,64 @@ Para instalar as dependências e em seguida:
 
     yarn dev
 
-Para o setup da API você deve ter o `docker-compose` instalado. Crie um arquivo .env na raiz da pasta API seguindo arquivo `.env-sample`. Entre na pasta e execute:
-
-    make dev
-
-Com o servidor rodando e ainda na pasta dele, migre o banco de dados com:
-
-    make reset-db (Linux) ou make reset-db-win (Windows)
-
-
-Caso enfrente problemas com o comando `make` no windows você pode acessar o arquivo api/Makefile e seguir os comandos.
-
-
-E mãos à massa! Você pode ver a documentação do schema GraphQL e executar queries de teste em:
-
-    http://localhost:4100/graphql
-
 ## Reporte um bug :shit:
 
 Se você encontrou algum bug, primeiro navegue na aba `issues` para ter certeza se já não existe nada por lá, se não tiver não deixe de nos reportar!
 
-## Olhos no Futuro! :eyes:
+## Contribuidores ✨
 
-A ideia do projeto é criar uma comunidade sólida onde todos possam crescer de maneira rápida e simples. Oferecemos a oportunidade para pessoas que AINDA não tem condição de investir em um curso um roadmap 100% gratuito.
+As pessoas que estão fazendo esse projeto existir!
 
-Para o futuro pretendemos usar dessa comunidade para criar verdadeiras correntes :link::link::link: e angariar donates totalmente transparentes (monstrando na plataforma em tempo real) que serão convertidos em Bootcamps de tecnologias em alta na plataforma, e o melhor de tudo, a seleção dos instrutores serão feitas por você através de votações :ballot_box_with_check:
+<table>
+  <tr>
+    <td align="center">
+        <a href="https://github.com/marcos-nunes-dev">
+            <img src="https://avatars.githubusercontent.com/u/4360587?v=4" width="100px;" alt=""/>
+            <br />
+            <sub><b>Marcos Nunes</b></sub>
+        </a>
+        <br />
+        <a href="https://github.com/marcos-nunes-dev/Grow-Roadmaps/commits?author=marcos-nunes-dev" title="Code">
+            💻
+        </a>
+        <a href="#" title="Ideas, Planning, & Feedback">
+            🤔
+        </a>
+        <a href="https://github.com/marcos-nunes-dev/Grow-Roadmaps/commits?author=marcos-nunes-dev" title="Documentation">
+            📖
+        </a>
+        <a href="https://github.com/marcos-nunes-dev/Grow-Roadmaps/pulls?q=is%3Apr+reviewed-by%3marcos-nunes-dev" title="Reviewed Pull Requests">
+            👀
+        </a>
+        <a href="https://github.com/marcos-nunes-dev/Grow-Roadmaps/issues?q=author%3marcos-nunes-dev" title="Bug reports">
+            🐛
+        </a>
+    </td>   
+    <td align="center">
+        <a href="https://github.com/GustavoStraub">
+            <img src="https://avatars.githubusercontent.com/u/49662792?v=4" width="100px;" alt=""/>
+            <br />
+            <sub><b>Gustavo Straub</b></sub>
+        </a>
+        <br />
+        <a href="https://github.com/marcos-nunes-dev/Grow-Roadmaps/commits?author=GustavoStraub" title="Code">
+            💻
+        </a>
+        <a href="#" title="Ideas, Planning, & Feedback">
+            🤔
+        </a>
+        <a href="https://github.com/marcos-nunes-dev/Grow-Roadmaps/commits?author=GustavoStraub" title="Documentation">
+            📖
+        </a>
+        <a href="https://github.com/marcos-nunes-dev/Grow-Roadmaps/pulls?q=is%3Apr+reviewed-by%3GustavoStraub" title="Reviewed Pull Requests">
+            👀
+        </a>
+        <a href="https://github.com/marcos-nunes-dev/Grow-Roadmaps/issues?q=author%3GustavoStraub" title="Bug reports">
+            🐛
+        </a>
+    </td>    
+  </tr>
+</table>
 
-Dessa forma podemos criar conteúdo de qualidade para a comunidade e ao mesmo tempo incentivar novos criadores de conteúdo.
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
