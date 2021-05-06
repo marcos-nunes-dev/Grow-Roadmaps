@@ -29,11 +29,21 @@ Para instalar as dependências e em seguida:
 
     yarn dev
 
-Para o setup da API você deve ter o `docker-compose` instalado. Crie um arquivo .env na raiz da pasta API seguindo arquivo `.env-sample`. Entre na pasta e execute:
+Para o setup da API você deve seguir com:
 
-    make dev
+    yarn
 
-Com o servidor rodando e ainda na pasta dele, migre o banco de dados com:
+Crie um arquivo .env na raiz da pasta API seguindo arquivo `.env-sample`, se
+for a primeira vez executando a aplicação certifique se de ter instalado o PostgreSQL e criar
+um schema chamado `grow_roadmaps`. Mude as configurações de `usuario e senha` se necessário em `api/src/config/sequelize.config.js`. Com tudo pronto agora você pode:
+
+    yarn dev
+
+e Mãos a massa! Ahh se precisar, não esqueça: 
+
+    http://localhost:4100/graphql
+
+para ver a documentação de queries, mutations e subscriptions. 
 
     make reset-db (Linux) ou make reset-db-win (Windows)
 
